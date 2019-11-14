@@ -24,21 +24,12 @@ form {
 
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
 
-li {
-    display: inline-block;
-    margin: 20px;
-}
-
-input[type="checkbox"][id^="modal-checkbox"] {
+input[type="checkbox"][id^="character-checkbox"] {
     display: none;
 }
 
-.modal-checkbox-label {
+.character-checkbox-label {
     border: 1px solid black;
     display: block;
     border-radius: 3px;
@@ -52,14 +43,14 @@ input[type="checkbox"][id^="modal-checkbox"] {
 }
 
 
-.modal-checkbox-label img {
+.character-checkbox-label img {
     height: 100%;
     width: 100%;
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
 }
 
-:checked+.modal-checkbox-label {
+:checked+.character-checkbox-label {
     border: 1px solid pink;
     transition: ease-in-out 150ms;
     transform: scale(0.95);
