@@ -34,12 +34,14 @@ input[type="checkbox"][id^="character-checkbox"] {
     display: block;
     border-radius: 3px;
     position: relative;
-    margin: 10px 60px 10px 0;
+    margin: 20px 0 0 0;
     cursor: pointer;
     user-select: none;
     transition: ease-in-out 150ms;
-    width: 100px;
-    height: 100px;
+    width: 50%;
+    height: 50%;
+    left:25%;
+    right:25%;
 }
 
 
