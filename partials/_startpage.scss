@@ -30,7 +30,7 @@ input[type="checkbox"][id^="character-checkbox"] {
 }
 
 .character-checkbox-label {
-    border: 1px solid black;
+    border: 2px solid transparent;
     display: block;
     border-radius: 3px;
     position: relative;
@@ -53,7 +53,7 @@ input[type="checkbox"][id^="character-checkbox"] {
 }
 
 :checked+.character-checkbox-label {
-    border: 1px solid pink;
+    border: 2px solid pink;
     transition: ease-in-out 150ms;
     transform: scale(0.95);
 }
