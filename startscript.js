@@ -10,10 +10,10 @@ function getcards(id) {
             someCards.innerHTML = "";
             someCards.innerHTML += `
             <div class="card">
-            <h2> ${result2.name} </h2>
-            <p> ${result2.gender} </p>
-            <p> ${result2.culture}</p>
-            <p> ${result2.born} </p>`;
+            <h2>${result2.name}</h2>
+            <p>${result2.gender}</p>
+            <p>${result2.culture}</p>
+            <p>${result2.born}</p>`;
 
         })
 

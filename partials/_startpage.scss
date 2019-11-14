@@ -1,0 +1,66 @@
+#image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+#cards div {
+    width: 200px;
+    height: 400px;
+    padding: 10px;
+}
+
+#abilities-btn {
+    height: 30px;
+    width: 100%;
+}
+
+form {
+    position: absolute;
+    width: 70%;
+    top: 100px;
+    left: 15%;
+    right: 15%;
+
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 20px;
+}
+
+input[type="checkbox"][id^="modal-checkbox"] {
+    display: none;
+}
+
+.modal-checkbox-label {
+    border: 1px solid black;
+    display: block;
+    border-radius: 3px;
+    position: relative;
+    margin: 10px 60px 10px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: ease-in-out 150ms;
+    width: 100px;
+    height: 100px;
+}
+
+
+.modal-checkbox-label img {
+    height: 100%;
+    width: 100%;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+:checked+.modal-checkbox-label {
+    border: 1px solid pink;
+    transition: ease-in-out 150ms;
+    transform: scale(0.95);
+}
