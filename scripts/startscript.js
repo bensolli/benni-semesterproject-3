@@ -10,6 +10,7 @@ function getcards(id) {
             someCards.innerHTML = "";
             someCards.innerHTML += `
             <div class="card">
+            <h3>${player1}</h3>
             <h2>${result2.name}</h2>
             <p>${result2.gender}</p>
             <p>${result2.culture}</p>
@@ -24,6 +25,15 @@ function getcards(id) {
 
 /*SelectedPlayer stores the selected players*/
 selectedPlayers = [];
+
+
+/*naming the selected players*/
+let player1 = selectedPlayers.slice(2,-1);
+let player2 = selectedPlayers.slice(-1);
+player1 = "player 1";
+player2 = "player 2";
+
+
 
 /*Limits SelectedPlayer to have two element*/
 function addPlayer(id){
@@ -51,4 +61,6 @@ function markSelectedPlayersChecked() {
     }  
 }
 
+
+//how to somehow signify whats player 1 and 2?
 
