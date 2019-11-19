@@ -11,89 +11,111 @@
 
 <body>
 
-    <div class="container">
 
-        <div class="row">
-            <div class="col-2">
-                <h5>John Snow</h5>
-                <input type="checkbox" onclick="getcards(583)" id="character-checkbox-583">
-                <label for="character-checkbox-583" class="[ character-checkbox-label ]">
-                    <img src="images/JohnSnow.svg" />
-                </label>
+    <div id="background-1">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-12">
+                    <h1>Game of Thrones the Board Game</h1>
+                </div>
             </div>
-            <div class="col-2">
-                <h5>Daenerys Targaryen</h5>
-                <input type="checkbox" onclick="getcards(271)" id="character-checkbox-271">
-                <label for="character-checkbox-271" class="[ character-checkbox-label ]">
-                    <img src="images/DaenerysTargaryen.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Sansa Stark</h5>
-                <input type="checkbox" onclick="getcards(957)" id="character-checkbox-957">
-                <label for="character-checkbox-957" class="[ character-checkbox-label ]">
-                    <img src="images/SansaStark.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Arya Stark</h5>
-                <input type="checkbox" onclick="getcards(148)" id="character-checkbox-148">
-                <label for="character-checkbox-148" class="[ character-checkbox-label ]">
-                    <img src="images/AryaStark.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Joffrey Baratheon</h5>
-                <input type="checkbox" onclick="getcards(565)" id="character-checkbox-565">
-                <label for="character-checkbox-565" class="[ character-checkbox-label ]">
-                    <img src="images/JoffreyBaratheon.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Tyrion Lannister</h5>
-                <input type="checkbox" onclick="getcards(1052)" id="character-checkbox-1052">
-                <label for="character-checkbox-1052" class="[ character-checkbox-label ]">
-                    <img src="images/TyrionLannister.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Jaime Lannister</h5>
-                <input type="checkbox" onclick="getcards(529)" id="character-checkbox-529">
-                <label for="character-checkbox-529" class="[ character-checkbox-label ]">
-                    <img src="images/JaimeLannister.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Cersei Lannister</h5>
-                <input type="checkbox" onclick="getcards(238)" id="character-checkbox-238">
-                <label for="character-checkbox-238" class="[ character-checkbox-label ]">
-                    <img src="images/CerseiLannister.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Brienne of Tarth</h5>
-                <input type="checkbox" onclick="getcards(216)" id="character-checkbox-216">
-                <label for="character-checkbox-216" class="[ character-checkbox-label ]">
-                    <img src="images/BrienneofTarth.svg" />
-                </label>
-            </div>
-            <div class="col-2">
-                <h5>Missandei</h5>
-                <input type="checkbox" onclick="getcards(1709)" id="character-checkbox-1709">
-                <label for="character-checkbox-1709" class="[ character-checkbox-label ]">
-                    <img src="images/Missandei.svg" />
-                </label>
+
+
+
+            <div class="row">
+
+                <div class="col-4">
+                    <div id="cards">
+                        <div class="card">
+                                <h3>Press any figure to select your first player</h3>
+                                <hr>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="col-8">
+
+                        <div class="[ character-wrapper ]">
+                            <h5>John Snow</h5>
+                            <input type="checkbox" onclick="selectCharacter(583)" id="character-checkbox-583">
+                            <label for="character-checkbox-583" class="[ character-checkbox-label ]">
+                                <img src="images/JohnSnow.svg" />
+                            </label>
+                        </div>
+
+                        <div class="[ character-wrapper ]">
+                            <h5>Daenerys Targaryen</h5>
+                            <input type="checkbox" onclick="selectCharacter(271)" id="character-checkbox-271">
+                            <label for="character-checkbox-271" class="[ character-checkbox-label ]">
+                                <img src="images/DaenerysTargaryen.svg" />
+                            </label>
+                        </div>
+
+                        <div class="[ character-wrapper ]">
+                            <h5>Sansa Stark</h5>
+                            <input type="checkbox" onclick="selectCharacter(957)" id="character-checkbox-957">
+                            <label for="character-checkbox-957" class="[ character-checkbox-label ]">
+                                <img src="images/SansaStark.svg" />
+                            </label>
+                        </div>
+                        <div class="[ character-wrapper ]">
+                            <h5>Arya Stark</h5>
+                            <input type="checkbox" onclick="selectCharacter(148)" id="character-checkbox-148">
+                            <label for="character-checkbox-148" class="[ character-checkbox-label ]">
+                                <img src="images/AryaStark.svg" />
+                            </label>
+                        </div>
+                        <div class="[ character-wrapper ]">
+                            <h5>Joffrey Baratheon</h5>
+                            <input type="checkbox" onclick="selectCharacter(565)" id="character-checkbox-565">
+                            <label for="character-checkbox-565" class="[ character-checkbox-label ]">
+                                <img src="images/JoffreyBaratheon.svg" />
+                            </label>
+                        </div>
+                        <div class="[ character-wrapper ]">
+                            <h5>Tyrion Lannister</h5>
+                            <input type="checkbox" onclick="selectCharacter(1052)" id="character-checkbox-1052">
+                            <label for="character-checkbox-1052" class="[ character-checkbox-label ]">
+                                <img src="images/TyrionLannister.svg" />
+                            </label>
+                        </div>
+                        <div class="[ character-wrapper ]">
+                            <h5>Jaime Lannister</h5>
+                            <input type="checkbox" onclick="selectCharacter(529)" id="character-checkbox-529">
+                            <label for="character-checkbox-529" class="[ character-checkbox-label ]">
+                                <img src="images/JaimeLannister.svg" />
+                            </label>
+                        </div>
+                        <div class="[ character-wrapper ]">
+                            <h5>Cersei Lannister</h5>
+                            <input type="checkbox" onclick="selectCharacter(238)" id="character-checkbox-238">
+                            <label for="character-checkbox-238" class="[ character-checkbox-label ]">
+                                <img src="images/CerseiLannister.svg" />
+                            </label>
+                        </div>
+                        <div class="[ character-wrapper ]">
+                            <h5>Brienne of Tarth</h5>
+                            <input type="checkbox" onclick="selectCharacter(216)" id="character-checkbox-216">
+                            <label for="character-checkbox-216" class="[ character-checkbox-label ]">
+                                <img src="images/BrienneofTarth.svg" />
+                            </label>
+                        </div>
+                        <div class="[ character-wrapper ]">
+                            <h5>Missandei</h5>
+                            <input type="checkbox" onclick="selectCharacter(1709)" id="character-checkbox-1709">
+                            <label for="character-checkbox-1709" class="[ character-checkbox-label ]">
+                                <img src="images/Missandei.svg" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-                <div id="cards"></div>
-            </div>
-        </div>
-    </div>
 
-
-    <script src="scripts/startscript.js"></script>
+        <script src="scripts/startscript.js"></script>
 
 </body>
 

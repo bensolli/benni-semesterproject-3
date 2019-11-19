@@ -57,3 +57,9 @@ input[type="checkbox"][id^="character-checkbox"] {
     transition: ease-in-out 150ms;
     transform: scale(0.95);
 }
+
+.character-wrapper{
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+}

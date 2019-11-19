@@ -1,37 +1,73 @@
-function getcards(id) {
-/*husk å separere disse to*/
-    fetch('https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api/characters/' + id)
-        .then((res) => res.json())
-        .then((data) => {
-            let result2 = data;
-            console.log(data);
 
-            let someCards = document.getElementById("cards");
-            someCards.innerHTML = "";
-            someCards.innerHTML += `
-            <div class="card">
-            <h3>${player1}</h3>
-            <h2>${result2.name}</h2>
-            <p>${result2.gender}</p>
-            <p>${result2.culture}</p>
-            <p>${result2.born}</p>`;
-
-        })
-        
-        addPlayer(id);
-        markSelectedPlayersChecked();
-}
-
+characters = [];
 
 /*SelectedPlayer stores the selected players*/
 selectedPlayers = [];
 
 
-/*naming the selected players*/
-let player1 = selectedPlayers.slice(2,-1);
-let player2 = selectedPlayers.slice(-1);
-player1 = "player 1";
-player2 = "player 2";
+
+
+function selectCharacter(id){
+    addPlayer(id);
+    markSelectedPlayersChecked();
+    fetchCharacterInfo(id)
+    .then(createCard);
+}
+
+
+function fetchCharacterInfo(id) {
+    return fetch('https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api/characters/' + id)
+    .then((response) => response.json()).then((CharacterInfo) => characters[id] = CharacterInfo);
+}
+
+
+
+
+
+
+function createCard(){
+
+    let someCards = document.getElementById("cards");
+
+    someCards.innerHTML = "";
+
+    for (let i = 0; i < selectedPlayers.length; i++){ 
+
+        let id = selectedPlayers[i];
+
+        let character = characters[id];
+        
+        someCards.innerHTML += `
+            <div class="card">
+            <h3>Player ${i+1}</h3>
+            <h2>${character.name}</h2>
+            <p>${character.culture}</p>
+            <p>${character.gender}</p>
+            <p>${character.playedBy}</p>
+            <hr>`;
+    }
+
+    
+
+
+    /*
+    let someCards = document.getElementById("cards");
+    someCards.innerHTML = "";
+    someCards.innerHTML += `
+    <div class="card">
+    <h3>${player1}</h3>
+    <h2>${id.name}</h2>
+    <p>${id.culture}</p>
+    <p>${id.gender}</p>
+    <p>${id.playedBy}</p>`;
+*/
+
+
+}
+
+
+
+
 
 
 
