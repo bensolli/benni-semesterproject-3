@@ -1,4 +1,5 @@
 
+/*characters stores the API values*/
 characters = [];
 
 /*SelectedPlayer stores the selected players*/
@@ -6,7 +7,7 @@ selectedPlayers = [];
 
 
 
-
+/*runs all the functions*/
 function selectCharacter(id){
     addPlayer(id);
     markSelectedPlayersChecked();
@@ -15,6 +16,8 @@ function selectCharacter(id){
 }
 
 
+
+/*fetches the API*/
 function fetchCharacterInfo(id) {
     return fetch('https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api/characters/' + id)
     .then((response) => response.json()).then((CharacterInfo) => characters[id] = CharacterInfo);
@@ -23,8 +26,7 @@ function fetchCharacterInfo(id) {
 
 
 
-
-
+//Signifies what's player 1 and 2?
 function createCard(){
 
     let someCards = document.getElementById("cards");
@@ -34,7 +36,6 @@ function createCard(){
     for (let i = 0; i < selectedPlayers.length; i++){ 
 
         let id = selectedPlayers[i];
-
         let character = characters[id];
         
         someCards.innerHTML += `
@@ -47,28 +48,7 @@ function createCard(){
             <hr>`;
     }
 
-    
-
-
-    /*
-    let someCards = document.getElementById("cards");
-    someCards.innerHTML = "";
-    someCards.innerHTML += `
-    <div class="card">
-    <h3>${player1}</h3>
-    <h2>${id.name}</h2>
-    <p>${id.culture}</p>
-    <p>${id.gender}</p>
-    <p>${id.playedBy}</p>`;
-*/
-
-
 }
-
-
-
-
-
 
 
 /*Limits SelectedPlayer to have two element*/
@@ -81,6 +61,8 @@ function addPlayer(id){
     selectedPlayers = selectedPlayers.slice(-2);
 
 }
+
+
 
 function markSelectedPlayersChecked() {
       
@@ -97,6 +79,8 @@ function markSelectedPlayersChecked() {
     }  
 }
 
+function startGame(){
+    
+    localStorage.setItem('players', JSON.stringify(selectedPlayers))
 
-//how to somehow signify whats player 1 and 2?
-
+}
