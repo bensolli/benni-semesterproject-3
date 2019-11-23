@@ -1,8 +1,10 @@
-.gameBoard__block{
-    background: pink;
+td[class*="gameBoard__block-"] {
+    //background: pink;
+    border-bottom: 10px solid $bs-pink;
+    max-height: 100px;
 }
 
-.gameBoard{
+.gameBoard {
     width: 100%;
 }
 

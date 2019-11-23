@@ -17,9 +17,16 @@
 
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <h1>Game of Thrones the Board Game</h1>
+                    <button onclick="rollTheDice()">Roll the dice</button>
+                    <div id="dicenumber"></div>
                 </div>
+
+                <div class="col-6">
+                        <div id="playerOnesTurn"></div>
+                        <div id="playerTwosTurn"></div>
+                    </div>
             </div>
 
 
@@ -29,51 +36,51 @@
                 <div class="col-12">
                     <table class="[ gameBoard ]">
                         <tr>
-                            <td class="[ gameBoard__block ]" id="9"></td>
-                            <td class="[ gameBoard__block ]" id="8"></td>
-                            <td class="[ gameBoard__block ]" id="7"></td>
-                            <td class="[ gameBoard__block ]" id="6"></td>
-                            <td class="[ gameBoard__block ]" id="5"></td>
-                            <td class="[ gameBoard__block ]" id="4"></td>
-                            <td class="[ gameBoard__block ]" id="3"></td>
-                            <td class="[ gameBoard__block ]" id="2"></td>
-                            <td class="[ gameBoard__block ]" id="1" id="start-block"></td>
+                            <td class="[ gameBoard__block-9 ]" id="nine-9"></td>
+                            <td class="[ gameBoard__block-8 ]" id="eight-8"></td>
+                            <td class="[ gameBoard__block-7 ]" id="seven-7"></td>
+                            <td class="[ gameBoard__block-6 ]" id="six-6"></td>
+                            <td class="[ gameBoard__block-5 ]" id="five-5"></td>
+                            <td class="[ gameBoard__block-4 ]" id="four-4"></td>
+                            <td class="[ gameBoard__block-3 ]" id="three-3"></td>
+                            <td class="[ gameBoard__block-2 ]" id="two-2"></td>
+                            <td class="[ gameBoard__block-1 ]" id="one-1" id="start-block"></td>
                             <td class="[ gameBoard__none ]"></td>
                         </tr>
 
                         <tr>
-                            <td class="[ gameBoard__block ]" id="10"></td>
+                            <td class="[ gameBoard__block-10 ]" id="ten-10"></td>
                             <td class="[ gameBoard__none ]" colspan="9"></td>
                         </tr>
                         <tr>
-                            <td class="[ gameBoard__block ]" id="11"></td>
-                            <td class="[ gameBoard__block ]" id="12"></td>
-                            <td class="[ gameBoard__block ]" id="13"></td>
-                            <td class="[ gameBoard__block ]" id="14"></td>
-                            <td class="[ gameBoard__block ]" id="15"></td>
-                            <td class="[ gameBoard__block ]" id="16"></td>
-                            <td class="[ gameBoard__block ]" id="17"></td>
-                            <td class="[ gameBoard__block ]" id="18"></td>
-                            <td class="[ gameBoard__block ]" id="19"></td>
-                            <td class="[ gameBoard__block ]" id="20"></td>
+                            <td class="[ gameBoard__block-11 ]" id="eleven-11"></td>
+                            <td class="[ gameBoard__block-12 ]" id="tvelve-12"></td>
+                            <td class="[ gameBoard__block-13 ]" id="thirteen-13"></td>
+                            <td class="[ gameBoard__block-14 ]" id="fourteen-14"></td>
+                            <td class="[ gameBoard__block-15 ]" id="fiftheen-15"></td>
+                            <td class="[ gameBoard__block-16 ]" id="sixtheen-16"></td>
+                            <td class="[ gameBoard__block-17 ]" id="seventheen-17"></td>
+                            <td class="[ gameBoard__block-18 ]" id="eighteen-18"></td>
+                            <td class="[ gameBoard__block-19 ]" id="ninetheen-19"></td>
+                            <td class="[ gameBoard__block-20 ]" id="twenty-20"></td>
                         </tr>
 
                         <tr>
                             <td class="[ gameBoard__none ]" colspan="9"></td>
-                            <td class="[ gameBoard__block ]" id="21"></td>
+                            <td class="[ gameBoard__block-21 ]" id="twentyone-21"></td>
                         </tr>
 
                         <tr>
                             <td class="[ gameBoard__none ]"></td>
-                            <td class="[ gameBoard__block ]" id="22"></td>
-                            <td class="[ gameBoard__block ]" id="23"></td>
-                            <td class="[ gameBoard__block ]" id="24"></td>
-                            <td class="[ gameBoard__block ]" id="25"></td>
-                            <td class="[ gameBoard__block ]" id="26"></td>
-                            <td class="[ gameBoard__block ]" id="27"></td>
-                            <td class="[ gameBoard__block ]" id="28"></td>
-                            <td class="[ gameBoard__block ]" id="29"></td>
-                            <td class="[ gameBoard__block ]" id="end-block" id="30"></td>
+                            <td class="[ gameBoard__block-30 ]" id="twentytwo-30"></td>
+                            <td class="[ gameBoard__block-29 ]" id="twentythree-29"></td>
+                            <td class="[ gameBoard__block-28 ]" id="twentyfour-28"></td>
+                            <td class="[ gameBoard__block-27 ]" id="twentyfive-27"></td>
+                            <td class="[ gameBoard__block-26]" id="twentysix-26"></td>
+                            <td class="[ gameBoard__block-25 ]" id="twentyseven-25"></td>
+                            <td class="[ gameBoard__block-24 ]" id="twentyeight-24"></td>
+                            <td class="[ gameBoard__block-23 ]" id="twentynine-23"></td>
+                            <td class="[ gameBoard__block-22 ]" id="end-block" id="thirthy-22"></td>
                         </tr>
 
 
@@ -85,7 +92,7 @@
         </div>
     </div>
 
-    <script src="scripts/startscript.js"></script>
+    <script src="scripts/boardscript.js"></script>
 
 </body>
 
