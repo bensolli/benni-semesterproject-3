@@ -109,13 +109,13 @@ function itsPlayerOnesTurn(){
 
 
     if(playerOne.tileNumber > 1 ){
-        let playertokens = document.querySelector(".gameBoard__block-" + playerOne.tileNumber);
+        let playertokens = document.querySelector(".board_step-" + playerOne.tileNumber);
         playertokens.innerHTML = "";
 
         playerOneClear = playerOne.tileNumber - diceNumber;
         console.log(playerOneClear);
         
-        let playertoken1 = document.querySelector(".gameBoard__block-" + playerOneClear);
+        let playertoken1 = document.querySelector(".board_step-" + playerOneClear);
         playertoken1.innerHTML = "";
 
                     /*getting the items from local storage, and converting it to a usable array*/
@@ -126,7 +126,7 @@ function itsPlayerOnesTurn(){
         <div class="playertoken"><img src=${playerArray[0]} /></div>`;
 
     } else{
-        let playertokens = document.querySelector(".gameBoard__block-" + playerOne.tileNumber);
+        let playertokens = document.querySelector(".board_step-" + playerOne.tileNumber);
         playertokens.innerHTML = "";
 
             /*getting the items from local storage, and converting it to a usable array*/
@@ -144,13 +144,13 @@ function itsPlayerTwosTurn(){
 
 
     if(playerOne.tileNumber > 1 ){
-    let playertokens = document.querySelector(".gameBoard__block-" + playerTwo.tileNumber);
+    let playertokens = document.querySelector(".board_step-" + playerTwo.tileNumber);
     playertokens.innerHTML = "";
 
     playerTwoClear = playerTwo.tileNumber - diceNumber;
     console.log(playerTwoClear);
     
-    let playertoken1 = document.querySelector(".gameBoard__block-" + playerTwoClear);
+    let playertoken1 = document.querySelector(".board_step-" + playerTwoClear);
     playertoken1.innerHTML = "";
 
     /*getting the items from local storage, and converting it to a usable array*/
@@ -160,7 +160,7 @@ function itsPlayerTwosTurn(){
         playertokens.innerHTML += `
         <div class="playertoken"><img src=${playerArray[1]} /></div>`;
     } else{
-        let playertoken1 = document.querySelector(".gameBoard__block-" + playerTwoClear);
+        let playertoken1 = document.querySelector(".board_step-" + playerTwoClear);
         playertoken1.innerHTML = "";
     
         /*getting the items from local storage, and converting it to a usable array*/

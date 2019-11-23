@@ -4,4 +4,5 @@ document.getElementById("pressEnter").addEventListener("keyup", function(event){
         event.preventDefault();
         document.getElementById("start-btn").click();
       }
+
   });

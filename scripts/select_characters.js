@@ -10,6 +10,10 @@ characterNames = [];
 
 /*Runs the API and the selection of the characters*/
 function selectCharacter(id){
+
+    playAudio();
+
+
     addPlayer(id);
     markSelectedPlayersChecked();
     addStartBtn();
@@ -101,6 +105,12 @@ function startGame(){
   
 }
 
+
+/*adds sound effects*/
+function playAudio() { 
+let x = document.getElementById("characterAudio"); 
+  x.play(); 
+} 
 
 
 
