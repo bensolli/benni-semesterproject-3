@@ -1,0 +1,23 @@
+.modal-wrapper{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: $dark-transparant;
+    z-index: 999;
+}
+
+.modal-card{
+    background: $white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: $shadow;
+    color: $bs-black;
+    width: 50%;
+    left: 25%;
+    right: 25%;
+    top: 25%;
+    bottom: 25%;
+    position: relative;
+}

@@ -202,6 +202,10 @@ h5 {
   text-decoration: none;
 }
 
+.dice-img {
+  width: 100px;
+}
+
 .logo-wrapper {
   margin-top: 50px;
   position: relative;
@@ -656,6 +660,30 @@ tr {
   grid-row-start: 3;
   grid-row-end: 4;
   border-bottom: 10px solid #2B2B2B;
+}
+
+.modal-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-card {
+  background: #ececec;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 75px 0px rgba(0, 0, 0, 0.1);
+  color: #222222;
+  width: 50%;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */
