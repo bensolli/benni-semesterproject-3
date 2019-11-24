@@ -1,17 +1,25 @@
 let playerOne = {
     tileNumber: 1,
+    dragonEgg: 0,
     isPlayersturn: true
 }
 
 let playerTwo = {
     tileNumber: 1,
+    dragonEgg: 0,
     isPlayersturn: false
+
 }
 
 
 
 function playerturns() {
-
+    //clearsPreviousSteps();
+    spikeTrap();
+    console.log(playerOne.tileNumber);
+console.log(playerTwo.tileNumber);
+    dragonEgg();
+    firetrap();
     playersTurnModal();
     checkifwon();
 
@@ -21,15 +29,11 @@ function playerturns() {
         playerOne.isPlayersturn = false;
 
         theDice();
+
         playerOne.tileNumber = playerOne.tileNumber + diceNumber;
         console.log(playerOne.tileNumber);
 
-
         itsPlayerOnesTurn();
-        //playerOneClear = playerOne.tileNumber - clearsteps;
-        //console.log(playerOneClear);
-
-
 
     } else {
         playerOne.isPlayersturn = true;
@@ -42,12 +46,6 @@ function playerturns() {
         itsPlayerTwosTurn();
 
 
-
-
-
-        //playerTwoClear = playerTwo.tileNumber - clearsteps;
-        //console.log(playerTwoClear); 
-
     }
 
     console.log(playerOne);
@@ -59,45 +57,15 @@ function playerturns() {
 function rollTheDice() {
 
     playerturns();
-    //createPlayers();
 
 }
 
-//startNumber = 0;
-
-//diceArray = [];
-
-
-
-
 
 function theDice() {
-    //console.log(diceArray);
-    // diceArray = diceArray.slice(-2);
     playAudio();
     diceNumber = Math.floor(Math.random() * 6) + 1;
     let diceImage = "images/dice/dice-" + diceNumber + ".svg";
     document.querySelector('.dice-img').setAttribute('src', diceImage);
-
-
-    // startNumber = startNumber + diceNumber;
-    //console.log(startNumber);
-
-    // diceArray.push(startNumber);
-    //clearsteps = diceArray[0];
-    //console.log(clearsteps);
-
-    /*
-    theNumber1 = playerOne.tileNumber;
-    theNumber1 = theNumber1 - diceNumber;
-    
-    theNumber2 = playerTwo.tileNumber;
-    theNumber2 = theNumber2 - diceNumber;
-    
-    console.log(theNumber2);
-*/
-
-    //rolldiceofturn();
 }
 
 
@@ -157,7 +125,8 @@ function itsPlayerTwosTurn() {
             console.log(playerArray);
 
             playertokens.innerHTML += `
-        <div class="playertoken"><img src=${playerArray[1]} /></div>`;
+            <div class="playertoken"><img src=${playerArray[1]} /></div>`;
+
         } else {
             let playertoken1 = document.querySelector(".board_step-" + playerTwoClear);
             playertoken1.innerHTML = "";
@@ -171,6 +140,151 @@ function itsPlayerTwosTurn() {
         }
     }, 500);
 }
+
+/*
+function clearsPreviousSteps() {
+
+    //let boardRange = (0, 30);
+    var boardRange = new Array(30);
+    console.log(boardRange);
+
+    for (let i = 0; i < boardRange.length; i++) {
+        if (boardRange < playerOne.tileNumber) {
+            let boardSteps = document.querySelector(".board_step-" + boardRange);
+            boardSteps.innerHTML = "";
+            console.log(boardSteps);
+           if (boardRange < playerTwo.tileNumber){
+            let boardSteps = document.querySelector(".board_step-" + boardRange);
+            boardSteps.innerHTML = "";
+            console.log(boardSteps);
+           }
+        }
+
+    }
+}*/
+
+
+function spikeTrap(){
+    setTimeout(function () {
+    if (playerOne.tileNumber == 3) {
+            playerOne.tileNumber = 1;
+            let playermodal = document.querySelector(".modal-wrapper-container");
+            playermodal.innerHTML += `
+        <div class="modal-wrapper">
+            <div class="modal-card">
+                <h2>Oh no! player one you stept on deadly spikes, go back to start so mommmy can put a bandaid on it!</h2>
+                <button onclick="clearModal()">continue</button>
+            </div>
+        </div>`;
+        }
+    
+    if (playerTwo.tileNumber == 3) {
+            playerTwo.tileNumber = 1;
+            let playermodal = document.querySelector(".modal-wrapper-container");
+            playermodal.innerHTML += `
+        <div class="modal-wrapper">
+            <div class="modal-card">
+                <h2>Oh no! player two stept on deadly spikes, go back to start so mommmy can put a bandaid on it!</h2>
+                <button onclick="clearModal()">continue</button>
+            </div>
+        </div>`;
+        } 
+    }, 1100);
+}
+
+
+function dragonEgg() {
+    setTimeout(function () {
+    //let dragonEggStep = document.querySelector(".board_step-wrapper-7");
+
+    if (playerOne.tileNumber == 7 /*&& dragonEggStep.innerHTML == `<img src="images/traps/dragon-egg.svg" alt="dragon-egg" class="[ board-tokens ]" id="dragon-egg" />`*/) {
+        playerOne.dragonEgg = 1;
+
+        let playermodal = document.querySelector(".modal-wrapper-container");
+        playermodal.innerHTML += `
+    <div class="modal-wrapper">
+        <div class="modal-card">
+            <h2>Player one aquired a dragon egg, and is now restiant to fire!</h2>
+            <button onclick="clearModal()">continue</button>
+        </div>
+    </div>`;
+
+    } else {
+
+        if (playerTwo.tileNumber == 7 /*&& dragonEggStep.innerHTML == `<img src="images/traps/dragon-egg.svg" alt="dragon-egg" class="[ board-tokens ]" id="dragon-egg" />`*/) {
+            playerTwo.dragonEgg = 1;
+            let playermodal = document.querySelector(".modal-wrapper-container");
+            playermodal.innerHTML += `
+        <div class="modal-wrapper">
+            <div class="modal-card">
+                <h2>Player two aquired a dragon egg, and is now restiant to fire!</h2>
+                <button onclick="clearModal()">continue</button>
+            </div>
+        </div>`;
+        }
+    }
+}, 1100);
+    console.log(playerOne.dragonEgg);
+    console.log(playerTwo.dragonEgg);
+}
+
+
+
+
+function firetrap() {
+    setTimeout(function () {
+    if (playerOne.tileNumber == 17) {
+        if (playerTwo.dragonEgg = 1) {
+            playerOne.tileNumber = 18;
+            playerOne.dragonEgg = 0;
+            let playermodal = document.querySelector(".modal-wrapper-container");
+            playermodal.innerHTML += `
+        <div class="modal-wrapper">
+            <div class="modal-card">
+                <h2>Player one skipped the fire, sadly the dragon egg did not survive</h2>
+                <button onclick="clearModal()">continue</button>
+            </div>
+        </div>`;
+        } else {
+            playerOne.tileNumber = 10;
+            let playermodal = document.querySelector(".modal-wrapper-container");
+            playermodal.innerHTML += `
+        <div class="modal-wrapper">
+            <div class="modal-card">
+                <h2>Oh no! player one had to run back ten steps to put out the fire</h2>
+                <button onclick="clearModal()">continue</button>
+            </div>
+        </div>`;
+        }
+    } else if (playerTwo.tileNumber == 17) {
+        if (playerTwo.dragonEgg = 1) {
+            playerTwo.tileNumber = 18;
+            playerTwo.dragonEgg = 0;
+            let playermodal = document.querySelector(".modal-wrapper-container");
+            playermodal.innerHTML += `
+        <div class="modal-wrapper">
+            <div class="modal-card">
+                <h2>Player two skipped the fire, sadly the dragon egg did not survive</h2>
+                <button onclick="clearModal()">continue</button>
+            </div>
+        </div>`;
+        } else {
+            playerOne.tileNumber = 10;
+            let playermodal = document.querySelector(".modal-wrapper-container");
+            playermodal.innerHTML += `
+        <div class="modal-wrapper">
+            <div class="modal-card">
+                <h2>Oh no! player two had to run back ten steps to put out the fire</h2>
+                <button onclick="clearModal()">continue</button>
+            </div>
+        </div>`;
+        }
+    }
+}, 1100);
+}
+
+
+
 
 
 function playersTurnModal() {
@@ -214,17 +328,17 @@ function checkifwon() {
             window.open("winner-page.html", "_top");
 
         } else {
-            
+
         }
     }
 }
 
 /*adds sound effects*/
-function playAudio() { 
-    let x = document.getElementById("characterAudio"); 
-      x.play(); 
-    } 
-    
+function playAudio() {
+    let x = document.getElementById("characterAudio");
+    x.play();
+}
+
 
 
 

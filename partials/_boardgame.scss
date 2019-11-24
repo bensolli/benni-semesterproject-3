@@ -13,6 +13,7 @@ tr{
 }
 
 
+
 .board-grid{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -22,226 +23,224 @@ tr{
     padding: 50px;
 }
 
-.board_step-10 {
+
+div[class*="board_step-wrapper-"] {
+    position: relative;
+    border-bottom: 10px solid $bs-background;
+}
+
+div[class*="board_step-wrapper-"] img {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+}
+
+#white-walker{
+    width: 60%;
+    left: 20%;
+    right: 20%;
+}
+
+#dragon-egg{
+    width: 50%;
+    left: 25%;
+    right: 25%;
+}
+
+
+
+.board_step-wrapper-10 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
+
 }
-.board_step-9 {
+.board_step-wrapper-9 {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
+
 }
-.board_step-8 {
+.board_step-wrapper-8 {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-7 {
+.board_step-wrapper-7 {
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-6 {
+.board_step-wrapper-6 {
     grid-column-start: 5;
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
 
-.board_step-5 {
+.board_step-wrapper-5 {
     grid-column-start: 6;
     grid-column-end: 7;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-4 {
+.board_step-wrapper-4 {
     grid-column-start: 7;
     grid-column-end: 8;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-3 {
+.board_step-wrapper-3 {
     grid-column-start: 8;
     grid-column-end: 9;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-2 {
+.board_step-wrapper-2 {
     grid-column-start: 9;
     grid-column-end: 10;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-1 {
+.board_step-wrapper-1 {
     grid-column-start: 10;
     grid-column-end: 11;
     grid-row-start: 1;
     grid-row-end: 2;
-    border-bottom: 10px solid $bs-background;
 }
 
 
 
 
 
-
-
-.board_step-11 {
+.board_step-wrapper-11 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-12 {
+.board_step-wrapper-12 {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-13 {
+.board_step-wrapper-13 {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-14 {
+.board_step-wrapper-14 {
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-15 {
+.board_step-wrapper-15 {
     grid-column-start: 5;
     grid-column-end: 6;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
 
-.board_step-16 {
+.board_step-wrapper-16 {
     grid-column-start: 6;
     grid-column-end: 7;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-17 {
+.board_step-wrapper-17 {
     grid-column-start: 7;
     grid-column-end: 8;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-18 {
+.board_step-wrapper-18 {
     grid-column-start: 8;
     grid-column-end: 9;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-19 {
+.board_step-wrapper-19 {
     grid-column-start: 9;
     grid-column-end: 10;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-20 {
+.board_step-wrapper-20 {
     grid-column-start: 10;
     grid-column-end: 11;
     grid-row-start: 2;
     grid-row-end: 3;
-    border-bottom: 10px solid $bs-background;
 }
 
 
 
-.board_step-30 {
+.board_step-wrapper-30 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-29 {
+.board_step-wrapper-29 {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-28 {
+.board_step-wrapper-28 {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-27 {
+.board_step-wrapper-27 {
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-26 {
+.board_step-wrapper-26 {
     grid-column-start: 5;
     grid-column-end: 6;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
 
-.board_step-25 {
+.board_step-wrapper-25 {
     grid-column-start: 6;
     grid-column-end: 7;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-24 {
+.board_step-wrapper-24 {
     grid-column-start: 7;
     grid-column-end: 8;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-23 {
+.board_step-wrapper-23 {
     grid-column-start: 8;
     grid-column-end: 9;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-22 {
+.board_step-wrapper-22 {
     grid-column-start: 9;
     grid-column-end: 10;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
-.board_step-21 {
+.board_step-wrapper-21 {
     grid-column-start: 10;
     grid-column-end: 11;
     grid-row-start: 3;
     grid-row-end: 4;
-    border-bottom: 10px solid $bs-background;
 }
