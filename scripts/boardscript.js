@@ -1,27 +1,22 @@
 let playerOne = {
     tileNumber: 1,
     dragonEgg: 0,
-    isPlayersturn: true
+    isPlayersturn: true,
+    index: 0,
+    playerType: "one"
 }
 
 let playerTwo = {
     tileNumber: 1,
     dragonEgg: 0,
-    isPlayersturn: false
-
+    isPlayersturn: false,
+    index: 1,
+    playerType: "two"
 }
 
 
 
 function playerturns() {
-    //clearsPreviousSteps();
-    spikeTrap();
-    console.log(playerOne.tileNumber);
-console.log(playerTwo.tileNumber);
-    dragonEgg();
-    firetrap();
-    playersTurnModal();
-    checkifwon();
 
     if (playerOne.isPlayersturn == true) {
 
@@ -29,23 +24,23 @@ console.log(playerTwo.tileNumber);
         playerOne.isPlayersturn = false;
 
         theDice();
-
         playerOne.tileNumber = playerOne.tileNumber + diceNumber;
-        console.log(playerOne.tileNumber);
 
-        itsPlayerOnesTurn();
+        playersTurnModal(playerOne)
+        itsPlayerTurn(playerOne);
+        traps(playerOne);
+
 
     } else {
         playerOne.isPlayersturn = true;
         playerTwo.isPlayersturn = false;
 
         theDice();
-
         playerTwo.tileNumber = playerTwo.tileNumber + diceNumber;
 
-        itsPlayerTwosTurn();
-
-
+        playersTurnModal(playerTwo);
+        itsPlayerTurn(playerTwo);
+        traps(playerTwo);
     }
 
     console.log(playerOne);
@@ -53,11 +48,32 @@ console.log(playerTwo.tileNumber);
 
 }
 
+function traps(traps){
 
-function rollTheDice() {
-
-    playerturns();
-
+    if(traps.tileNumber == 3){
+        spikeTrap(traps);
+    }
+    if(traps.tileNumber == 7){
+        dragonEgg(traps);
+    }
+    if(traps.tileNumber == 8){
+        firetrap(traps);
+    }
+    if(traps.tileNumber == 14){
+        whiteWalker(traps);
+    }
+    if(traps.tileNumber == 17){
+        firetrap(traps);
+    }
+    if(traps.tileNumber == 25){
+        spikeTrap(traps);
+    }
+    if(traps.tileNumber == 28){
+        whiteWalker(traps);
+    }
+    if(traps.tileNumber >= 30){   
+        checkIfWon(traps);
+    }
 }
 
 
@@ -70,267 +86,130 @@ function theDice() {
 
 
 
-function itsPlayerOnesTurn() {
+function itsPlayerTurn(player) {
+   
     setTimeout(function () {
+        let playertokens = document.querySelector(".board_step-" + player.tileNumber);
 
-        if (playerOne.tileNumber > 1) {
-            let playertokens = document.querySelector(".board_step-" + playerOne.tileNumber);
-            playertokens.innerHTML = "";
-
-            playerOneClear = playerOne.tileNumber - diceNumber;
-            console.log(playerOneClear);
-
-            let playertoken1 = document.querySelector(".board_step-" + playerOneClear);
-            playertoken1.innerHTML = "";
-
-            /*getting the items from local storage, and converting it to a usable array*/
-            let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []
-            console.log(playerArray);
-
-            playertokens.innerHTML += `
-        <div class="playertoken"><img src=${playerArray[0]} /></div>`;
-
-        } else {
-            let playertokens = document.querySelector(".board_step-" + playerOne.tileNumber);
-            playertokens.innerHTML = "";
-
-            /*getting the items from local storage, and converting it to a usable array*/
-            let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []
-            console.log(playerArray);
-
-            playertokens.innerHTML += `
-        <div class="playertoken"><img src=${playerArray[0]} /></div>`;
+        let playertoken1 = document.querySelector("#player-" + player.index);
+        if (playertoken1) {
+            playertoken1.remove();
         }
+
+        /*getting the items from local storage, and converting it to a usable array*/
+        let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []
+        console.log(playerArray);
+
+        playertokens.innerHTML += `
+                <div id="player-${player.index}"><img src=${playerArray[player.index]} /></div>`;
 
     }, 500);
 
 }
 
-function itsPlayerTwosTurn() {
+
+function spikeTrap(traps) {
     setTimeout(function () {
 
-
-        if (playerOne.tileNumber > 1) {
-            let playertokens = document.querySelector(".board_step-" + playerTwo.tileNumber);
-            playertokens.innerHTML = "";
-
-            playerTwoClear = playerTwo.tileNumber - diceNumber;
-            console.log(playerTwoClear);
-
-            let playertoken1 = document.querySelector(".board_step-" + playerTwoClear);
-            playertoken1.innerHTML = "";
-
-            /*getting the items from local storage, and converting it to a usable array*/
-            let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : [];
-            console.log(playerArray);
-
-            playertokens.innerHTML += `
-            <div class="playertoken"><img src=${playerArray[1]} /></div>`;
-
-        } else {
-            let playertoken1 = document.querySelector(".board_step-" + playerTwoClear);
-            playertoken1.innerHTML = "";
-
-            /*getting the items from local storage, and converting it to a usable array*/
-            let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : [];
-            console.log(playerArray);
-
-            playertokens.innerHTML += `
-            <div class="playertoken"><img src=${playerArray[1]} /></div>`;
-        }
-    }, 500);
-}
-
-/*
-function clearsPreviousSteps() {
-
-    //let boardRange = (0, 30);
-    var boardRange = new Array(30);
-    console.log(boardRange);
-
-    for (let i = 0; i < boardRange.length; i++) {
-        if (boardRange < playerOne.tileNumber) {
-            let boardSteps = document.querySelector(".board_step-" + boardRange);
-            boardSteps.innerHTML = "";
-            console.log(boardSteps);
-           if (boardRange < playerTwo.tileNumber){
-            let boardSteps = document.querySelector(".board_step-" + boardRange);
-            boardSteps.innerHTML = "";
-            console.log(boardSteps);
-           }
-        }
-
-    }
-}*/
-
-
-function spikeTrap(){
-    setTimeout(function () {
-    if (playerOne.tileNumber == 3) {
-            playerOne.tileNumber = 1;
+            traps.tileNumber = 1;
             let playermodal = document.querySelector(".modal-wrapper-container");
             playermodal.innerHTML += `
-        <div class="modal-wrapper">
-            <div class="modal-card">
-                <h2>Oh no! player one you stept on deadly spikes, go back to start so mommmy can put a bandaid on it!</h2>
-                <button onclick="clearModal()">continue</button>
-            </div>
-        </div>`;
-        }
-    
-    if (playerTwo.tileNumber == 3) {
-            playerTwo.tileNumber = 1;
-            let playermodal = document.querySelector(".modal-wrapper-container");
-            playermodal.innerHTML += `
-        <div class="modal-wrapper">
-            <div class="modal-card">
-                <h2>Oh no! player two stept on deadly spikes, go back to start so mommmy can put a bandaid on it!</h2>
-                <button onclick="clearModal()">continue</button>
-            </div>
-        </div>`;
-        } 
+            <div class="modal-wrapper">
+                <div class="modal-card">
+                    <h2>Oh no! player ${traps.playerType} you stept on deadly spikes, go back to start so mommmy can put a bandaid on it!</h2>
+                    <button onclick="clearModal()">continue</button>
+                </div>
+            </div>`;
+
     }, 1100);
 }
 
 
-function dragonEgg() {
+function dragonEgg(traps) {
     setTimeout(function () {
-    //let dragonEggStep = document.querySelector(".board_step-wrapper-7");
 
-    if (playerOne.tileNumber == 7 /*&& dragonEggStep.innerHTML == `<img src="images/traps/dragon-egg.svg" alt="dragon-egg" class="[ board-tokens ]" id="dragon-egg" />`*/) {
-        playerOne.dragonEgg = 1;
-
-        let playermodal = document.querySelector(".modal-wrapper-container");
-        playermodal.innerHTML += `
-    <div class="modal-wrapper">
-        <div class="modal-card">
-            <h2>Player one aquired a dragon egg, and is now restiant to fire!</h2>
-            <button onclick="clearModal()">continue</button>
-        </div>
-    </div>`;
-
-    } else {
-
-        if (playerTwo.tileNumber == 7 /*&& dragonEggStep.innerHTML == `<img src="images/traps/dragon-egg.svg" alt="dragon-egg" class="[ board-tokens ]" id="dragon-egg" />`*/) {
-            playerTwo.dragonEgg = 1;
+            traps.dragonEgg = 1;
             let playermodal = document.querySelector(".modal-wrapper-container");
             playermodal.innerHTML += `
-        <div class="modal-wrapper">
-            <div class="modal-card">
-                <h2>Player two aquired a dragon egg, and is now restiant to fire!</h2>
-                <button onclick="clearModal()">continue</button>
-            </div>
-        </div>`;
-        }
-    }
-}, 1100);
-    console.log(playerOne.dragonEgg);
-    console.log(playerTwo.dragonEgg);
+            <div class="modal-wrapper">
+                <div class="modal-card">
+                    <h2>Player ${traps.playerType}  aquired a dragon egg, and is now fire resistant!</h2>
+                    <button onclick="clearModal()">continue</button>
+                </div>
+            </div>`;
+
+    }, 1100);
 }
 
 
 
 
-function firetrap() {
+function firetrap(traps) {
     setTimeout(function () {
-    if (playerOne.tileNumber == 17) {
-        if (playerTwo.dragonEgg = 1) {
-            playerOne.tileNumber = 18;
-            playerOne.dragonEgg = 0;
-            let playermodal = document.querySelector(".modal-wrapper-container");
-            playermodal.innerHTML += `
+
+            if (traps.dragonEgg == 1) {
+                traps.tileNumber = traps.tileNumber + 1;
+                traps.dragonEgg = 0;
+                let playermodal = document.querySelector(".modal-wrapper-container");
+                playermodal.innerHTML += `
         <div class="modal-wrapper">
             <div class="modal-card">
-                <h2>Player one skipped the fire, sadly the dragon egg did not survive</h2>
+                <h2>Player ${traps.playerType} skipped the fire with one extra step, sadly the dragon egg did not survive</h2>
                 <button onclick="clearModal()">continue</button>
             </div>
         </div>`;
-        } else {
-            playerOne.tileNumber = 10;
-            let playermodal = document.querySelector(".modal-wrapper-container");
-            playermodal.innerHTML += `
+            } else {
+                traps.tileNumber = traps.tileNumber - 10;
+                let playermodal = document.querySelector(".modal-wrapper-container");
+                playermodal.innerHTML += `
         <div class="modal-wrapper">
             <div class="modal-card">
-                <h2>Oh no! player one had to run back ten steps to put out the fire</h2>
+                <h2>Oh no! player ${traps.playerType} had to run back ten steps to put out the fire</h2>
                 <button onclick="clearModal()">continue</button>
             </div>
         </div>`;
-        }
-    } else if (playerTwo.tileNumber == 17) {
-        if (playerTwo.dragonEgg = 1) {
-            playerTwo.tileNumber = 18;
-            playerTwo.dragonEgg = 0;
-            let playermodal = document.querySelector(".modal-wrapper-container");
-            playermodal.innerHTML += `
-        <div class="modal-wrapper">
-            <div class="modal-card">
-                <h2>Player two skipped the fire, sadly the dragon egg did not survive</h2>
-                <button onclick="clearModal()">continue</button>
-            </div>
-        </div>`;
-        } else {
-            playerOne.tileNumber = 10;
-            let playermodal = document.querySelector(".modal-wrapper-container");
-            playermodal.innerHTML += `
-        <div class="modal-wrapper">
-            <div class="modal-card">
-                <h2>Oh no! player two had to run back ten steps to put out the fire</h2>
-                <button onclick="clearModal()">continue</button>
-            </div>
-        </div>`;
-        }
-    }
-}, 1100);
+            }
+        
+    }, 1100);
 }
 
 
-
-
-
-function playersTurnModal() {
-
+function whiteWalker(traps) {
     setTimeout(function () {
-        if (playerOne.isPlayersturn == true) {
+            traps.tileNumber = traps.tileNumber - 10;
+
             let playermodal = document.querySelector(".modal-wrapper-container");
             playermodal.innerHTML += `
-        <div class="modal-wrapper">
-            <div class="modal-card">
-                <h2>Its player one's turn!</h2>
-                <button onclick="clearModal()">continue</button>
-            </div>
-        </div>`;
-        } else {
-            let playermodal = document.querySelector(".modal-wrapper-container");
-            playermodal.innerHTML += `
-        <div class="modal-wrapper">
-            <div class="modal-card">
-                <h2>Its player two's turn!</h2>
-                <button onclick="clearModal()">continue</button>
-            </div>
-        </div>`;
-        }
-    }, 1000);
+            <div class="modal-wrapper">
+                <div class="modal-card">
+                    <h2>Oh no! player ${traps.playerType} just encountered a white walker! Save yourself! go to back 10 steps</h2>
+                    <button onclick="clearModal()">continue</button>
+                </div>
+            </div>`;
+
+    }, 1100);
 }
+
+
+function playersTurnModal(player) {
+
+    let playermodal = document.querySelector("#playersTurn");
+    playermodal.innerHTML = "";
+    playermodal.innerHTML += `
+        <h2>Its player ${player.playerType} turn!</h2>
+        <p>toss dice to continue</p>`;
+}
+
 
 function clearModal() {
     let playermodal = document.querySelector(".modal-wrapper-container");
     playermodal.innerHTML = "";
 }
 
-function checkifwon() {
-    if (playerOne.tileNumber >= 30) {
-        localStorage.setItem('winner', JSON.stringify('Player One is the winner!'));
+function checkIfWon(traps) {
+ 
+        localStorage.setItem('winner', JSON.stringify('Player' + ' ' + traps.playerType + ' ' + 'is the winner!'));
         window.open("winner-page.html", "_top");
-
-    } else {
-        localStorage.setItem('winner', JSON.stringify('Player Two is the winner!'));
-        if (playerTwo.tileNumber >= 30) {
-            window.open("winner-page.html", "_top");
-
-        } else {
-
-        }
-    }
 }
 
 /*adds sound effects*/

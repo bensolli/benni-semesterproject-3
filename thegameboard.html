@@ -34,125 +34,57 @@
 
             <div class="row">
                 <div class="col-6">
-                    <button onclick="rollTheDice()">Roll the dice</button>
+                    <button onclick="playerturns()">Roll the dice</button>
 
                     <img class="dice-img" src="images/dice/dice-6.svg" alt="dice" />
                 </div>
 
                 <div class="col-6">
-                    <div id="playerOnesTurn"></div>
-                    <div id="playerTwosTurn"></div>
+                    <div id="playersTurn"></div>
                 </div>
             </div>
 
 
 
             <div class="row">
-                <!--
-                <div class="col-12">
-                    <table class="[ gameBoard ]">
-                        <tr>
-                            <td class="[ gameBoard__block-9 ]" id="nine-9"></td>
-                            <td class="[ gameBoard__block-8 ]" id="eight-8"></td>
-                            <td class="[ gameBoard__block-7 ]" id="seven-7"></td>
-                            <td class="[ gameBoard__block-6 ]" id="six-6"></td>
-                            <td class="[ gameBoard__block-5 ]" id="five-5"></td>
-                            <td class="[ gameBoard__block-4 ]" id="four-4"></td>
-                            <td class="[ gameBoard__block-3 ]" id="three-3"></td>
-                            <td class="[ gameBoard__block-2 ]" id="two-2"></td>
-                            <td class="[ gameBoard__block-1 ]" id="one-1" id="start-block"></td>
-                            <td class="[ gameBoard__none ]"></td>
-                        </tr>
 
-                        <tr>
-                            <td class="[ gameBoard__block-10 ]" id="ten-10"></td>
-                            <td class="[ gameBoard__none ]" colspan="9"></td>
-                        </tr>
-                        <tr>
-                            <td class="[ gameBoard__block-11 ]" id="eleven-11"></td>
-                            <td class="[ gameBoard__block-12 ]" id="tvelve-12"></td>
-                            <td class="[ gameBoard__block-13 ]" id="thirteen-13"></td>
-                            <td class="[ gameBoard__block-14 ]" id="fourteen-14"></td>
-                            <td class="[ gameBoard__block-15 ]" id="fiftheen-15"></td>
-                            <td class="[ gameBoard__block-16 ]" id="sixtheen-16"></td>
-                            <td class="[ gameBoard__block-17 ]" id="seventheen-17"></td>
-                            <td class="[ gameBoard__block-18 ]" id="eighteen-18"></td>
-                            <td class="[ gameBoard__block-19 ]" id="ninetheen-19"></td>
-                            <td class="[ gameBoard__block-20 ]" id="twenty-20"></td>
-                        </tr>
-
-                        <tr>
-                            <td class="[ gameBoard__none ]" colspan="9"></td>
-                            <td class="[ gameBoard__block-21 ]" id="twentyone-21"></td>
-                        </tr>
-
-                        <tr>
-                            <td class="[ gameBoard__none ]"></td>
-                            <td class="[ gameBoard__block-30 ]" id="twentytwo-30"></td>
-                            <td class="[ gameBoard__block-29 ]" id="twentythree-29"></td>
-                            <td class="[ gameBoard__block-28 ]" id="twentyfour-28"></td>
-                            <td class="[ gameBoard__block-27 ]" id="twentyfive-27"></td>
-                            <td class="[ gameBoard__block-26]" id="twentysix-26"></td>
-                            <td class="[ gameBoard__block-25 ]" id="twentyseven-25"></td>
-                            <td class="[ gameBoard__block-24 ]" id="twentyeight-24"></td>
-                            <td class="[ gameBoard__block-23 ]" id="twentynine-23"></td>
-                            <td class="[ gameBoard__block-22 ]" id="end-block" id="thirthy-22"></td>
-                        </tr>
-
-
-                    </table>
-                </div>
--->
                 <div class="col-12">
 
                     <div class="board-grid">
                         <div class="board_step-wrapper-10"><div class="board_step-10"></div></div>
                         <div class="board_step-wrapper-9"><div class="board_step-9"></div></div>
-                        <div class="board_step-wrapper-8"><div class="board_step-8"></div></div>
-                        <div class="board_step-wrapper-7"><img src="images/traps/dragon-egg.svg" alt="dragon-egg" class="[ board-tokens ]" id="dragon-egg" /><div class="board_step-7"></div></div>
+                        <div class="board_step-wrapper-8"><img src="images/traps/flames.svg" alt="ladder" /><div class="board_step-8"></div></div>
+                        <div class="board_step-wrapper-7"><img src="images/traps/dragon-egg.svg" alt="dragon-egg" id="dragon-egg" /><div class="board_step-7"></div></div>
                         <div class="board_step-wrapper-6"><div class="board_step-6"></div></div>
                         <div class="board_step-wrapper-5"><div class="board_step-5"></div></div>
                         <div class="board_step-wrapper-4"><div class="board_step-4"></div></div>
-                        <div class="board_step-wrapper-3"><img src="images/traps/spikes.svg" alt="spikes" class="[ board-tokens ]" /><div class="board_step-3"></div></div>
+                        <div class="board_step-wrapper-3"><img src="images/traps/spikes.svg" alt="spikes" /><div class="board_step-3"></div></div>
                         <div class="board_step-wrapper-2"><div class="board_step-2"></div></div>
                         <div class="board_step-wrapper-1"><div class="board_step-1"></div></div>
 
-                        <div class="board_step-wrapper-11"><img src="images/traps/ladder.svg" alt="ladder" class="[ board-tokens ]" /><div class="board_step-11"></div></div>
+                        <div class="board_step-wrapper-11"><img src="images/traps/ladder.svg" alt="ladder" /><div class="board_step-11"></div></div>
                         <div class="board_step-wrapper-12"><div class="board_step-12"></div></div>
                         <div class="board_step-wrapper-13"><div class="board_step-13"></div></div>
-                        <div class="board_step-wrapper-14"><div class="board_step-14"></div></div>
+                        <div class="board_step-wrapper-14"><img src="images/traps/white_walker.svg" alt="ladder" id="white-walker" /><div class="board_step-14"></div></div>
                         <div class="board_step-wrapper-15"><div class="board_step-15"></div></div>
                         <div class="board_step-wrapper-16"><div class="board_step-16"></div></div>
-                        <div class="board_step-wrapper-17"><img src="images/traps/flames.svg" alt="ladder" class="[ board-tokens ]" /><div class="board_step-17"></div></div>
+                        <div class="board_step-wrapper-17"><img src="images/traps/flames.svg" alt="ladder" /><div class="board_step-17"></div></div>
                         <div class="board_step-wrapper-18"><div class="board_step-18"></div></div>
                         <div class="board_step-wrapper-19"><div class="board_step-19"></div></div>
                         <div class="board_step-wrapper-20"><div class="board_step-20"></div></div>
 
                         <div class="board_step-wrapper-30"><div class="board_step-30"></div></div>
                         <div class="board_step-wrapper-29"><div class="board_step-29"></div></div>
-                        <div class="board_step-wrapper-28"><img src="images/traps/white_walker.svg" alt="ladder" class="[ board-tokens ]" id="white-walker" /><div class="board_step-28"></div></div>
+                        <div class="board_step-wrapper-28"><img src="images/traps/white_walker.svg" alt="ladder" id="white-walker" /><div class="board_step-28"></div></div>
                         <div class="board_step-wrapper-27"><div class="board_step-27"></div></div>
                         <div class="board_step-wrapper-26"><div class="board_step-26"></div></div>
-                        <div class="board_step-wrapper-25"><div class="board_step-25"></div></div>
+                        <div class="board_step-wrapper-25"><img src="images/traps/spikes.svg" alt="spikes" /><div class="board_step-25"></div></div>
                         <div class="board_step-wrapper-24"><div class="board_step-24"></div></div>
                         <div class="board_step-wrapper-23"><div class="board_step-23"></div></div>
                         <div class="board_step-wrapper-22"><div class="board_step-22"></div></div>
-                        <div class="board_step-wrapper-21"><img src="images/traps/ladder.svg" alt="ladder" class="[ board-tokens ]" /><div class="board_step-21"></div></div>
-
-
-
-
-
-
-
-
-
-
+                        <div class="board_step-wrapper-21"><img src="images/traps/ladder.svg" alt="ladder" /><div class="board_step-21"></div></div>
 
                     </div>
-
-
-
 
                 </div>
 
