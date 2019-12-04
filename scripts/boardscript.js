@@ -15,79 +15,145 @@ let playerTwo = {
     playerType: "two"
 }
 
+
 characterImages = JSON.parse(localStorage.getItem('players'));
 /*document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[0]}" />`;
-document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;
+document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;*/
 
+
+let playerCard1 = document.querySelector(".player-card-1");
+playerCard1.innerHTML += `
+<div class="player-card_img"><img src="${characterImages[0]}" /></div>
+<div class="player-card_text">
+    <ul>
+        <li><h3>Player 1</h3></li>
+        <li class="playerPosition-0">Position:${playerOne.tileNumber}</li>
+    </ul>
+</div>`;
+
+let playerCard2 = document.querySelector(".player-card-2");
+playerCard2.innerHTML += `
+<div class="player-card_img"><img src="${characterImages[1]}" /></div>
+<div class="player-card_text">
+    <ul>
+        <li><h3>Player 2</h3></li>
+        <li class="playerPosition-1">Position:${playerTwo.tileNumber}</li>
+    </ul>
+</div>`;
+
+
+function playerCardPosition(player){
+    let playerPosition = document.querySelector(".playerPosition-" + player.index);
+    playerPosition.innerHTML = "";
+    playerPosition.innerHTML += `
+        Position: ${player.tileNumber}`;
+}
 
 
 /*toggles the players turns*/
-        if(playerOne.tileNumber = 1){
-            document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[0]}" />`;
-        }
-        if(playerTwo.tileNumber = 1){
-            document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;
-        }
-function playerturns() {
+if (playerOne.tileNumber = 1) {
+    document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[0]}" />`;
+}
+if (playerTwo.tileNumber = 1) {
+    document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;
+}
+
+
+function truOrFalse() {
     if (playerOne.isPlayersturn == true) {
         playerTwo.isPlayersturn = true;
         playerOne.isPlayersturn = false;
+    }
+    else {
+        playerOne.isPlayersturn = true;
+        playerTwo.isPlayersturn = false;
+    }
+}
+
+
+function playerturns() {
+
+    if (playerOne.isPlayersturn == true) {
+        truOrFalse();
         theDice();
 
         playerOne.tileNumber = playerOne.tileNumber + diceNumber;
-        if(playerOne.tileNumber > 1){
+        if (playerOne.tileNumber > 1) {
             document.querySelector(".board_step-1").innerHTML = "";
         }
-        if(playerTwo.tileNumber === 1){
+        if (playerTwo.tileNumber === 1) {
             document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;
         }
         console.log(diceNumber, playerOne.tileNumber);
-        playersTurnModal(playerOne)
         itsPlayerTurn(playerOne);
         traps(playerOne);
-} else {
-        playerOne.isPlayersturn = true;
-        playerTwo.isPlayersturn = false;
+        diceSix();
+        playerCardPosition(playerOne);
+
+        document.getElementById("player-card-1").classList.add('player-Border-Indicator-On');
+        document.getElementById("player-card-2").classList.remove('player-Border-Indicator-On');
+    }
+
+    else {
+        truOrFalse();
         theDice();
         playerTwo.tileNumber = playerTwo.tileNumber + diceNumber;
-        if(playerOne.tileNumber > 1){
+        if (playerOne.tileNumber > 1) {
             document.querySelector(".board_step-1").innerHTML = "";
         }
         console.log(diceNumber, playerTwo.tileNumber);
-        playersTurnModal(playerTwo);
         itsPlayerTurn(playerTwo);
         traps(playerTwo);
+        diceSix();
+        playerCardPosition(playerTwo);
 
+        document.getElementById("player-card-2").classList.add('player-Border-Indicator-On');
+        document.getElementById("player-card-1").classList.remove('player-Border-Indicator-On');
     }
     console.log(playerOne);
     console.log(playerTwo);
 }
 
+
+function diceSix() {
+    if (diceNumber == 6) {
+        truOrFalse();
+    }
+
+    console.log(playerOne.isPlayersturn);
+    console.log(playerTwo.isPlayersturn);
+
+}
+
+
 /*collecting all the traps in one function*/
-function traps(traps){
-    if(traps.tileNumber == 3){
+function traps(traps) {
+    if (traps.tileNumber == 3) {
         spikeTrap(traps);
     }
-    if(traps.tileNumber == 7){
+    if (traps.tileNumber == 7) {
         dragonEgg(traps);
     }
-    if(traps.tileNumber == 8){
+    if (traps.tileNumber == 8) {
         firetrap(traps);
     }
-    if(traps.tileNumber == 14){
+    if (traps.tileNumber == 14) {
         whiteWalker(traps);
     }
-    if(traps.tileNumber == 17){
+    if (traps.tileNumber == 17) {
         firetrap(traps);
     }
-    if(traps.tileNumber == 25){
+    if (traps.tileNumber == 25) {
         spikeTrap(traps);
     }
-    if(traps.tileNumber == 28){
+    if (traps.tileNumber == 28) {
         whiteWalker(traps);
     }
-    if(traps.tileNumber >= 30){   
+    if (traps.tileNumber == 30) {
         checkIfWon(traps);
+    }
+    if (traps.tileNumber > 30) {
+        traps.tileNumber = traps.tileNumber - diceNumber;
     }
 }
 
@@ -107,10 +173,11 @@ function itsPlayerTurn(player) {
         if (playertoken1) {
             playertoken1.remove();
         }
-/*
-        if(characterImages){
-            characterImages[player.index].remove();
-        }*/
+
+        /*
+                if(characterImages){
+                    characterImages[player.index].remove();
+                }*/
 
         /*getting the items from local storage, and converting it to a usable array*/
         let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []
@@ -175,10 +242,9 @@ function firetrap(traps) {
                         <button onclick="clearModal()">continue</button>
                     </div>
                 </div>`;
-            }
+        }
     }, 1100);
 }
-
 
 /*white walker, basically the same as firetrap, without possibility to avoid it*/
 function whiteWalker(traps) {
@@ -189,22 +255,21 @@ function whiteWalker(traps) {
             <div class="modal-wrapper">
                 <div class="modal-card">
                     <h2>Oh no! player ${traps.playerType} just encountered a white walker! Save yourself! go to back 10 steps</h2>
-                    <button onclick="clearModal()">continue</button>
+                    <button onclick="clearModal()" >continue</button>
                 </div>
-            </div>`;
+            </div>`;       
     }, 1100);
 }
 
 
+document.getElementById("pressEnter").addEventListener("keyup", function(event){
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        playerturns();
+        clearModal();
+      }
+    });
 
-/*displays a text of who's turn in is*/
-function playersTurnModal(player) {
-    let playermodal = document.querySelector("#playersTurn");
-    playermodal.innerHTML = "";
-    playermodal.innerHTML += `
-        <h2>Its player ${player.playerType} turn!</h2>
-        <p>toss dice to continue</p>`;
-}
 
 /*clears all open modals on the board*/
 function clearModal() {
@@ -212,10 +277,13 @@ function clearModal() {
     playermodal.innerHTML = "";
 }
 
+
 /*this sets whoever reaches step 30 or more to local storage, and opens a new window displaying the winner*/
 function checkIfWon(traps) {
+    setTimeout(function () {
     localStorage.setItem('winner', JSON.stringify('Player' + ' ' + traps.playerType + ' ' + 'is the winner!'));
     window.open("winner-page.html", "_top");
+}, 1500);
 }
 
 /*adds sound effects*/

@@ -22,14 +22,26 @@
   
 
   #background-1{
-    background-color: $bs-background;
     left: 0;
     right: 0;
     top: 0;
     max-height: 60vh;
     padding: 5% 0 5% 0;
-    z-index: 2;
+    position: absolute;
+    z-index: 1;
   }
+
+
+
+  .background-decoration{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+
 
   .quit-btn{
     color: white;

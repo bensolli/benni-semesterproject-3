@@ -2,7 +2,6 @@
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #A1F6FF;
   padding: 50px;
 }
 
@@ -172,7 +171,7 @@
 
 body,
 html {
-  background: #2B2B2B;
+  background: #01133A;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -188,13 +187,22 @@ h5 {
 }
 
 #background-1 {
-  background-color: #2B2B2B;
   left: 0;
   right: 0;
   top: 0;
   max-height: 60vh;
   padding: 5% 0 5% 0;
-  z-index: 2;
+  position: absolute;
+  z-index: 1;
+}
+
+.background-decoration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
 }
 
 .quit-btn {
@@ -413,6 +421,30 @@ tr {
   height: 100px;
 }
 
+div[class*=player-card-] {
+  background: #ececec;
+  padding: 20px;
+  display: flex;
+}
+
+.player-card_img {
+  float: left;
+  width: 45%;
+}
+
+.player-card_img img {
+  width: 40%;
+}
+
+.player-card_text {
+  float: right;
+  width: 45%;
+}
+
+.player-Border-Indicator-On {
+  opacity: 0.6;
+}
+
 .board-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -420,11 +452,12 @@ tr {
   grid-gap: 10px;
   background-color: #ececec;
   padding: 50px;
+  border: 10px solid #2B2B2B;
 }
 
 div[class*=board_step-wrapper-] {
   position: relative;
-  border-bottom: 10px solid #2B2B2B;
+  border-bottom: 10px solid #01133A;
 }
 
 div[class*=board_step-wrapper-] img {
