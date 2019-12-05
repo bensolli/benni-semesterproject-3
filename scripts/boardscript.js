@@ -15,12 +15,10 @@ let playerTwo = {
     playerType: "two"
 }
 
-
+/*sets the items in local storage to a global variable*/
 characterImages = JSON.parse(localStorage.getItem('players'));
-/*document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[0]}" />`;
-document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;*/
 
-
+/*makes a infocard for Player One*/
 let playerCard1 = document.querySelector(".player-card-1");
 playerCard1.innerHTML += `
 <div class="player-card_img"><img src="${characterImages[0]}" /></div>
@@ -32,7 +30,7 @@ playerCard1.innerHTML += `
     </ul>
 </div>`;
 
-
+/*makes a infocard for Player Two*/
 let playerCard2 = document.querySelector(".player-card-2");
 playerCard2.innerHTML += `
 <div class="player-card_img"><img src="${characterImages[1]}" /></div>
@@ -44,7 +42,7 @@ playerCard2.innerHTML += `
     </ul>
 </div>`;
 
-
+/*tells what tile-position the player is on*/
 function playerCardPosition(player){
     let playerPosition = document.querySelector(".playerPosition-" + player.index);
     playerPosition.innerHTML = "";
@@ -52,88 +50,62 @@ function playerCardPosition(player){
         Position: ${player.tileNumber}`;
 }
 
+/*tells whether the player has or has'nt a dragon egg*/
 function eggInventory(traps){
     let eggContent = document.querySelector(".getDragonEgg-" + traps.index);
     eggContent.innerHTML = "";
-    console.log("bennies code",traps.dragonEgg)
     eggContent.innerHTML += `
     Dragon egg: ${traps.dragonEgg}`;
 }
 
+/*places the players on tile 1*/
+itsPlayerTurn(playerOne);
+itsPlayerTurn(playerTwo);
+
 /*toggles the players turns*/
-if (playerOne.tileNumber = 1) {
-    document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[0]}" />`;
-}
-if (playerTwo.tileNumber = 1) {
-    document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;
-}
-
-
-function truOrFalse() {
+function togglePlayer() {
     if (playerOne.isPlayersturn == true) {
         playerTwo.isPlayersturn = true;
         playerOne.isPlayersturn = false;
+        return playerTwo;
     }
     else {
         playerOne.isPlayersturn = true;
         playerTwo.isPlayersturn = false;
+        return playerOne;
     }
 }
+
+/*indicates that it is Player Ones turn by turning player two opaic*/
 document.getElementById("player-card-2").classList.add('player-Border-Indicator-On');
 
+/*places the players on the board*/
 function playerturns() {
+    let player = togglePlayer();
 
     if (playerOne.isPlayersturn == true) {
-        truOrFalse();
-        theDice();
+        otherPlayer = playerTwo
+    } else  otherPlayer = playerOne;
 
-        playerOne.tileNumber = playerOne.tileNumber + diceNumber;
-        if (playerOne.tileNumber > 1) {
-            document.querySelector(".board_step-1").innerHTML = "";
-        }
-        if (playerTwo.tileNumber === 1) {
-            document.querySelector(".board_step-1").innerHTML += `<img src="${characterImages[1]}" />`;
-        }
-        console.log(diceNumber, playerOne.tileNumber);
-        itsPlayerTurn(playerOne);
-        traps(playerOne);
-        diceSix();
-        playerCardPosition(playerOne);
+    theDice();
 
-        document.getElementById("player-card-1").classList.add('player-Border-Indicator-On');
-        document.getElementById("player-card-2").classList.remove('player-Border-Indicator-On');
-    }
+    otherPlayer.tileNumber = otherPlayer.tileNumber + diceNumber;
+    console.log(diceNumber, otherPlayer.tileNumber);
+    itsPlayerTurn(otherPlayer);
+    traps(otherPlayer);
+    diceSix();
+    playerCardPosition(otherPlayer);
 
-    else {
-        truOrFalse();
-        theDice();
-        playerTwo.tileNumber = playerTwo.tileNumber + diceNumber;
-        if (playerOne.tileNumber > 1) {
-            document.querySelector(".board_step-1").innerHTML = "";
-        }
-        console.log(diceNumber, playerTwo.tileNumber);
-        itsPlayerTurn(playerTwo);
-        traps(playerTwo);
-        diceSix();
-        playerCardPosition(playerTwo);
-
-        document.getElementById("player-card-2").classList.add('player-Border-Indicator-On');
-        document.getElementById("player-card-1").classList.remove('player-Border-Indicator-On');
-    }
-    console.log(playerOne);
-    console.log(playerTwo);
+    document.getElementById("player-card-" +  (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
+    document.getElementById("player-card-" + (player.index + 1)).classList.remove('player-Border-Indicator-On');
 }
 
-
+/*checks if the dice is six and grants another turn*/
 function diceSix() {
     if (diceNumber == 6) {
-        truOrFalse();
+        togglePlayer();
         diceSixModal();
     }
-
-    console.log(playerOne.isPlayersturn);
-    console.log(playerTwo.isPlayersturn);
-
 }
 
 /*message after getter a six on the dice*/
@@ -150,33 +122,29 @@ function diceSixModal() {
     }, 1100);   
 }
 
-
-/*collecting all the traps in one function*/
+/*collecting all the traps in one function, defining where they will occur*/
 function traps(traps) {
-    if (traps.tileNumber === 3) {
-        spikeTrap(traps);
+   
+    switch (traps.tileNumber){
+        case 3:
+        case 25:
+            spikeTrap(traps);
+            break;
+        case 14:
+        case 28:
+            whiteWalker(traps);
+            break;
+        case 7:
+            dragonEgg(traps); 
+            break;
+        case 8:
+        case 17:
+            firetrap(traps);
+            break;
+        case 30:
+            checkIfWon(traps);
     }
-    if (traps.tileNumber === 7) {
-        dragonEgg(traps);  
-    }
-    if (traps.tileNumber === 8) {
-        firetrap(traps);   
-    }
-    if (traps.tileNumber === 14) {
-        whiteWalker(traps);
-    }
-    if (traps.tileNumber === 17) {
-        firetrap(traps);
-    }
-    if (traps.tileNumber === 25) {
-        spikeTrap(traps);
-    }
-    if (traps.tileNumber === 28) {
-        whiteWalker(traps);
-    }
-    if (traps.tileNumber === 30) {
-        checkIfWon(traps);
-    }
+
     if (traps.tileNumber > 30) {
         traps.tileNumber = traps.tileNumber - diceNumber;
     }
@@ -199,11 +167,6 @@ function itsPlayerTurn(player) {
             playertoken1.remove();
         }
 
-        /*
-                if(characterImages){
-                    characterImages[player.index].remove();
-                }*/
-
         /*getting the items from local storage, and converting it to a usable array*/
         let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []
         console.log(playerArray);
@@ -211,7 +174,6 @@ function itsPlayerTurn(player) {
             <div id="player-${player.index}"><img src=${playerArray[player.index]} /></div>`;
     }, 500);
 }
-
 
 /*spike trap, player has to go back to start*/
 function spikeTrap(traps) {
@@ -225,10 +187,8 @@ function spikeTrap(traps) {
                     <button onclick="clearModal()">continue</button>
                 </div>
             </div>`;
-    }, 1100);
-    
+    }, 1100); 
 }
-
 
 /*Dragon egg, (antitrap), if aquired the player is able to survive the firetrap*/
 function dragonEgg(traps) {
@@ -252,7 +212,6 @@ function firetrap(traps) {
         if (traps.dragonEgg === 1) {
             traps.tileNumber = traps.tileNumber + 1;
             traps.dragonEgg = 0;
-            console.log("camerons code",traps.dragonEgg)
             let playermodal = document.querySelector(".modal-wrapper-container");
             playermodal.innerHTML += `
                 <div class="modal-wrapper">
@@ -292,6 +251,7 @@ function whiteWalker(traps) {
 }
 
 
+/*sets the key ENTER as a way of turning the dice and pressing "Continue buttons"*/
 document.getElementById("pressEnter").addEventListener("keyup", function(event){
     if (event.keyCode === 13) {
         event.preventDefault();
@@ -300,13 +260,11 @@ document.getElementById("pressEnter").addEventListener("keyup", function(event){
       }
     });
 
-
 /*clears all open modals on the board*/
 function clearModal() {
     let playermodal = document.querySelector(".modal-wrapper-container");
     playermodal.innerHTML = "";
 }
-
 
 /*this sets whoever reaches step 30 or more to local storage, and opens a new window displaying the winner*/
 function checkIfWon(traps) {
