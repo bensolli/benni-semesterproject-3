@@ -10,16 +10,16 @@
 </head>
 
 <body id="pressEnter">
-
+<!--
     <embed name="creepy-background-daniel_simon" src="soundtracks/creepy-background-daniel_simon.mp3" loop="true"
-        hidden="true" autostart="true">
+        hidden="true" autostart="true">-->
 
     <audio id="characterAudio">
         <source src="soundtracks/shake-and-roll-dice-soundbible.com-591494296.mp3" type="audio/ogg">
     </audio>
 
 
-    <div id="background-decoration"><img src="images/overlay-mountain-hills.svg" /></div>
+    <!--<div id="background-decoration"><img src="images/overlay-mountain-hills.svg" /></div>-->
 
 
     <!--Different modal popups-->
@@ -28,23 +28,19 @@
 
     <div id="background-1">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <a href="index.html" class="[ quit-btn ]">Exit game</a>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-5">
                     <div class="[ player-card-1 ]" id="player-card-1"></div>
                 </div>
+                <div class="col-2">
+                        <img onclick="playerturns()" class="[ dice-img ]" id="enter-btn" src="images/dice/dice-6.svg"
+                            alt="dice" />
+                    </div>
                 <div class="col-5">
                     <div class="[ player-card-2 ]" id="player-card-2"></div>
                 </div>
-                <div class="col-2">
-                    <img onclick="playerturns()" class="[ dice-img ]" id="enter-btn" src="images/dice/dice-6.svg"
-                        alt="dice" />
-                </div>
+
 
             </div>
 
@@ -87,7 +83,7 @@
                             <div class="board_step-1"></div>
                         </div>
 
-                        <div class="board_step-wrapper-11"><img src="images/traps/ladder.svg" alt="ladder" />
+                        <div class="board_step-wrapper-11"><img src="images/traps/ladder.svg" alt="ladder" class="[ ladder ]" />
                             <div class="board_step-11"></div>
                         </div>
                         <div class="board_step-wrapper-12">
@@ -147,7 +143,7 @@
                         <div class="board_step-wrapper-22">
                             <div class="board_step-22"></div>
                         </div>
-                        <div class="board_step-wrapper-21"><img src="images/traps/ladder.svg" alt="ladder" />
+                        <div class="board_step-wrapper-21"><img src="images/traps/ladder.svg" alt="ladder" class="[ ladder ]" />
                             <div class="board_step-21"></div>
                         </div>
 
@@ -156,6 +152,10 @@
                 </div>
 
             </div>
+
+            <div class="row">
+                    <div class="col-2"><a href="index.html" class="[ start-btn ]">Exit game</a></div>
+                </div>
 
         </div>
     </div>

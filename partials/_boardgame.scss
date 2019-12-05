@@ -1,26 +1,9 @@
-td[class*="gameBoard__block-"] {
-    //background: pink;
-    border-bottom: 10px solid $bs-pink;
-    max-height: 100px;
-}
-
-.gameBoard {
-    width: 100%;
-}
-
-tr{
-    height: 100px;
-}
-
-
-
 
 div[class*="player-card-"] {
-    background: $white;
+    border: 5px solid $white;
     padding: 20px;
     display: flex;
 }
-
 
 .player-card_img{
     float: left;
@@ -34,11 +17,30 @@ div[class*="player-card-"] {
 .player-card_text{
     float: right;
     width: 45%;
+
+    ul{
+        padding: 0;
+    }
+    li{
+        list-style-type: none;
+        color: $white;
+    }
 }
 
 .player-Border-Indicator-On{
     opacity: 0.6;
 }
+
+.dice-img{
+    width: 100%;
+    cursor: pointer;
+    transition: ease-in-out 0.1s;
+  }
+
+  .dice-img:hover{
+      transition: ease-in-out 0.3s;
+    transform: scale(1.2) rotate(10deg);
+  }
 
 
 .board-grid{
@@ -46,29 +48,32 @@ div[class*="player-card-"] {
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(3, 7vw);
     grid-gap: 10px;
-    background-color: $white;
-    padding: 50px;
-    border: 10px solid #2B2B2B;
+    //background-color: $white;
+    padding: 10px;
+    //border: 10px solid #2B2B2B;
 }
-
 
 div[class*="board_step-wrapper-"] {
     position: relative;
-    border-bottom: 10px solid $bs-background;
+    border-bottom: 10px solid $white;
 }
 
 div[class*="board_step-wrapper-"] img {
     position: absolute;
     bottom: 0;
-    width: 80%;
-    left: 10%;
-    right: 10%;
-}
-
-#white-walker{
     width: 60%;
     left: 20%;
     right: 20%;
+}
+
+.ladder{
+    bottom: 25px;
+}
+
+#white-walker{
+    width: 40%;
+    left: 30%;
+    right: 30%;
 }
 
 #dragon-egg{
@@ -76,8 +81,6 @@ div[class*="board_step-wrapper-"] img {
     left: 25%;
     right: 25%;
 }
-
-
 
 .board_step-wrapper-10 {
     grid-column-start: 1;

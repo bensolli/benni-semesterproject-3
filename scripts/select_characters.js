@@ -86,10 +86,9 @@ function createCard(){
         someCards.innerHTML += `
         <div class="col-3">
             <div class="character-card">
-                <h3>Player ${i+1}</h3>
-                <h2>${character.name}</h2>
+                <h2>Player ${i+1}</h2>
+                <h3>${character.name}</h3>
                 <p>${character.culture}</p>
-                <p>${character.gender}</p>
                 <p>${character.playedBy}</p>
             </div>
         </div>`;

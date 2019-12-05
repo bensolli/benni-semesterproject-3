@@ -33,45 +33,27 @@
   }
 
 
+.rules{
+  width: 50%;
+  left: 25%;
+  right: 25%;
+  height: 50%;
+  top: 25%;
+  bottom: 25%;
+  position: relative;
 
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  h1, li {
+    color: $white;
+    
+  }
+  li{
+    font-size: 18px;
+  }
+  ol{
+    padding:0;
+    margin-bottom: 50px;
 
-@-webkit-keyframes pulse {
-    from {
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
-  
-    50% {
-      -webkit-transform: scale3d(1.05, 1.05, 1.05);
-      transform: scale3d(1.05, 1.05, 1.05);
-    }
-  
-    to {
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
+    margin-left: 1em;
   }
-  
-  @keyframes pulse {
-    from {
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
-  
-    50% {
-      -webkit-transform: scale3d(1.05, 1.05, 1.05);
-      transform: scale3d(1.05, 1.05, 1.05);
-    }
-  
-    to {
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
-  }
-  
-  .pulse {
-    -webkit-animation-name: pulse;
-    animation-name: pulse;
-  }
-  
+}
+
