@@ -1,4 +1,3 @@
-
 /*Characters stores the API values*/
 characters = [];
 console.log(characters);
@@ -10,58 +9,33 @@ selectedPlayers = [];
 characterNames = [];
 console.log(characterNames);
 
-
 /*Making it possible to select character using the 1-0 keys*/
 document.getElementById("pressEnter").addEventListener("keyup", function(event){
-    if (event.keyCode === 49) {
-        selectCharacter(583);
-      } //1
-      if (event.keyCode === 50) {
-        selectCharacter(271);
-      } //2
-      if (event.keyCode === 51) {
-        selectCharacter(957);
-      } //3
-      if (event.keyCode === 52) {
-        selectCharacter(148);
-      } //4
-      if (event.keyCode === 53) {
-        selectCharacter(565);
-      } //5
-      if (event.keyCode === 54) {
-        selectCharacter(1052);
-      } //6
-      if (event.keyCode === 55) {
-        selectCharacter(529);
-      } //7
-      if (event.keyCode === 56) {
-        selectCharacter(238);
-      } //8
-      if (event.keyCode === 57) {
-        selectCharacter(216);
-      } //9
-      if (event.keyCode === 48) {
-        selectCharacter(1709);
-      } //0
-  });
-
-
+      switch (event.keyCode){
+        case 49: selectCharacter(583); break;
+        case 50: selectCharacter(271); break;
+        case 51: selectCharacter(957); break;
+        case 52: selectCharacter(148); break;
+        case 53: selectCharacter(565); break;
+        case 54: selectCharacter(1052); break;
+        case 55: selectCharacter(529); break;
+        case 56: selectCharacter(238); break;
+        case 57: selectCharacter(216); break;
+        case 48: selectCharacter(1709);
+    }
+});
 
 /*Runs the API and the selection of the characters*/
 function selectCharacter(id){
-
     playAudio();
-
-
     addPlayer(id);
     markSelectedPlayersChecked();
     addStartBtn();
-
     fetchCharacterInfo(id)
     .then(createCard);
 }
 
-/*Fetches the API*/
+/*Fetches the API and stores it in the characgers array */
 function fetchCharacterInfo(id) {
     return fetch('https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api/characters/' + id)
     .then((response) => response.json()).then((CharacterInfo) => characters[id] = CharacterInfo);
@@ -71,7 +45,6 @@ function fetchCharacterInfo(id) {
 function createCard(){
 
     let someCards = document.getElementById("cards");
-
     someCards.innerHTML = "";
 
     for (let i = 0; i < selectedPlayers.length; i++){ 
@@ -103,7 +76,6 @@ function addPlayer(id){
 
     /*Overwrites SelectedPlayer to only contain the two last selected players*/
     selectedPlayers = selectedPlayers.slice(-2);
-
 }
 
 function markSelectedPlayersChecked() {
@@ -120,9 +92,7 @@ function markSelectedPlayersChecked() {
     }  
 }
 
-
 function addStartBtn(){
-
     if(selectedPlayers.length === 2){
         let startBtnDiv = document.getElementById("startBtnDiv");
         startBtnDiv.innerHTML = "";
@@ -133,16 +103,12 @@ function addStartBtn(){
     }
 }
 
-
-
 /*Takes the values of the array characterNames and sends it to local storage*/
 function startGame(){
     characterNames = characterNames.slice(-2); 
     //localStorage.setItem('player1', JSON.stringify(characterNames[0]));
-    localStorage.setItem('players', JSON.stringify(characterNames));
-  
+    localStorage.setItem('players', JSON.stringify(characterNames));  
 }
-
 
 /*adds sound effects*/
 function playAudio() { 

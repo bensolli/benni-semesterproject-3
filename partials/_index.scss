@@ -14,7 +14,7 @@
     left: 15%;
     right: 15%;
     position: absolute;
-    z-index: 999;
+    //z-index: 999;
 }
 
 
@@ -28,7 +28,7 @@
 .backgorund-animation{
     width: 10px;
     height: 10px;
-    background: #4e4e4e;
+    background: $white;
 
   }
 
@@ -57,3 +57,18 @@
   }
 }
 
+
+.eyeWrapper{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+}
+.eyeSpan{
+  width: 200px;
+  height: 200px;
+  //background: white;
+  position: absolute;
+}

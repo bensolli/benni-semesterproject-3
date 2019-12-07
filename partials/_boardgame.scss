@@ -29,6 +29,8 @@ div[class*="player-card-"] {
 
 .player-Border-Indicator-On{
     opacity: 0.6;
+    transform: scale(0.95);
+    transition: ease-in-out 0.3s;
 }
 
 .dice-img{
