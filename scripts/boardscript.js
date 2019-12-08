@@ -1,10 +1,16 @@
+/*sets the items in local storage to a global variable*/
+characterImages = JSON.parse(localStorage.getItem('players'));
+
+
+
 /*defining the players*/
 let playerOne = {
     tileNumber: 1,
     dragonEgg: 0,
     isPlayersturn: true,
     index: 0,
-    playerType: "one"
+    playerType: "one",
+    playerImage: characterImages[0]
 }
 
 let playerTwo = {
@@ -12,11 +18,10 @@ let playerTwo = {
     dragonEgg: 0,
     isPlayersturn: false,
     index: 1,
-    playerType: "two"
+    playerType: "two",
+    playerImage: characterImages[1]
 }
 
-/*sets the items in local storage to a global variable*/
-characterImages = JSON.parse(localStorage.getItem('players'));
 
 /*makes a infocard for Player One*/
 let playerCard1 = document.querySelector(".player-card-1");
@@ -270,6 +275,7 @@ function clearModal() {
 function checkIfWon(traps) {
     setTimeout(function () {
     localStorage.setItem('winner', JSON.stringify('Player' + ' ' + traps.playerType + ' ' + 'is the winner!'));
+    localStorage.setItem('winnerImg', JSON.stringify(traps.playerImage));
     window.open("winner-page.html", "_top");
 }, 1500);
 }

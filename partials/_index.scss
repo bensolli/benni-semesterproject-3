@@ -14,7 +14,7 @@
     left: 15%;
     right: 15%;
     position: absolute;
-    //z-index: 999;
+    z-index: 999;
 }
 
 
@@ -67,8 +67,25 @@
   z-index: 999;
 }
 .eyeSpan{
-  width: 200px;
-  height: 200px;
+  width: 30%;
+  //height: 200px;
   //background: white;
+  padding: 50px;
   position: absolute;
+}
+
+.eyeSpanImg img {
+  width: 20%;
+  float: left;
+  position: relative;
+}
+
+.eyeSpantext{
+  float: right;
+  position: relative;
+  width: 70%;
+}
+
+.overFlowHidden{
+  overflow: hidden;
 }
