@@ -217,6 +217,12 @@ function firetrap(traps) {
         if (traps.dragonEgg === 1) {
             traps.tileNumber = traps.tileNumber + 1;
             traps.dragonEgg = 0;
+
+
+            //let playermodal = document.createElement('div');
+            //playermodal.classList.add('modal-wrapper-container');
+
+
             let playermodal = document.querySelector(".modal-wrapper-container");
             playermodal.innerHTML += `
                 <div class="modal-wrapper">
@@ -225,9 +231,11 @@ function firetrap(traps) {
                         <button onclick="clearModal()">continue</button>
                     </div>
                 </div>`;
+
                 eggInventory(traps);
         } else {
             traps.tileNumber = traps.tileNumber - 7;
+
             let playermodal = document.querySelector(".modal-wrapper-container");
             playermodal.innerHTML += `
                 <div class="modal-wrapper">
@@ -236,6 +244,7 @@ function firetrap(traps) {
                         <button onclick="clearModal()">continue</button>
                     </div>
                 </div>`;
+
         }
     }, 1100);
 }
@@ -244,6 +253,8 @@ function firetrap(traps) {
 function whiteWalker(traps) {
     setTimeout(function () {
         traps.tileNumber = traps.tileNumber - 10;
+        
+        
         let playermodal = document.querySelector(".modal-wrapper-container");
         playermodal.innerHTML += `
             <div class="modal-wrapper">
@@ -251,19 +262,25 @@ function whiteWalker(traps) {
                     <h2>Oh no! player ${traps.playerType} just encountered a white walker! Save yourself! run back 10 steps</h2>
                     <button onclick="clearModal()" >continue</button>
                 </div>
-            </div>`;       
+            </div>`; 
+            
+            
     }, 1100);
 }
 
 
 /*sets the key ENTER as a way of turning the dice and pressing "Continue buttons"*/
 document.getElementById("pressEnter").addEventListener("keyup", function(event){
-    if (event.keyCode === 13) {
+    if (event.keyCode === 32) {
         event.preventDefault();
         playerturns();
+      }
+      if (event.keyCode === 13) {
+        event.preventDefault();
         clearModal();
       }
     });
+    
 
 /*clears all open modals on the board*/
 function clearModal() {

@@ -282,7 +282,7 @@ h5 {
   margin-left: 1em;
 }
 
-.eyeWrapper {
+.winnerCardWrapper {
   position: absolute;
   left: 0;
   right: 0;
@@ -290,20 +290,17 @@ h5 {
   bottom: 0;
   z-index: 999;
 }
-
-.eyeSpan {
+.winnerCardWrapper--winnerCard {
   width: 30%;
   padding: 50px;
   position: absolute;
 }
-
-.eyeSpanImg img {
+.winnerCardWrapper--winnerCard__img img {
   width: 20%;
   float: left;
   position: relative;
 }
-
-.eyeSpantext {
+.winnerCardWrapper--winnerCard__text {
   float: right;
   position: relative;
   width: 70%;
@@ -329,6 +326,7 @@ h5 {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 10vw);
   grid-gap: 10px;
+  margin-bottom: 50px;
 }
 
 .character__item--1 {

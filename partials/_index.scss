@@ -17,7 +17,6 @@
     z-index: 999;
 }
 
-
 .marquee-wrapper{
     margin-top: 100px;
     position: absolute;
@@ -29,9 +28,7 @@
     width: 10px;
     height: 10px;
     background: $white;
-
   }
-
 
 .rules{
   width: 50%;
@@ -43,12 +40,13 @@
   position: relative;
 
   h1, li {
-    color: $white;
-    
+    color: $white;  
   }
+
   li{
     font-size: 18px;
   }
+
   ol{
     padding:0;
     margin-bottom: 50px;
@@ -58,32 +56,32 @@
 }
 
 
-.eyeWrapper{
+.winnerCardWrapper{
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   z-index: 999;
-}
-.eyeSpan{
-  width: 30%;
-  //height: 200px;
-  //background: white;
-  padding: 50px;
-  position: absolute;
-}
 
-.eyeSpanImg img {
-  width: 20%;
-  float: left;
-  position: relative;
-}
 
-.eyeSpantext{
-  float: right;
-  position: relative;
-  width: 70%;
+  &--winnerCard{
+    width: 30%;
+    padding: 50px;
+    position: absolute;
+
+    &__img img{
+      width: 20%;
+      float: left;
+      position: relative;
+    }
+
+    &__text{
+      float: right;
+      position: relative;
+      width: 70%;
+    }
+  }
 }
 
 .overFlowHidden{

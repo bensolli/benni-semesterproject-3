@@ -50,9 +50,7 @@ div[class*="player-card-"] {
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(3, 7vw);
     grid-gap: 10px;
-    //background-color: $white;
     padding: 10px;
-    //border: 10px solid #2B2B2B;
 }
 
 div[class*="board_step-wrapper-"] {
@@ -148,10 +146,6 @@ div[class*="board_step-wrapper-"] img {
     grid-row-end: 2;
 }
 
-
-
-
-
 .board_step-wrapper-11 {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -213,8 +207,6 @@ div[class*="board_step-wrapper-"] img {
     grid-row-start: 2;
     grid-row-end: 3;
 }
-
-
 
 .board_step-wrapper-30 {
     grid-column-start: 1;

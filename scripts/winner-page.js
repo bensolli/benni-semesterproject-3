@@ -18,7 +18,7 @@ var limitCardNumber = 50;
 var currentAmountCardNumber = 0;
 
 
-    screen = document.querySelector('.eyeWrapper');
+    screen = document.querySelector('.winnerCardWrapper');
     screen.addEventListener('mousemove', function(e) {
 
       //https://stackoverflow.com/questions/45136711/javascript-random-generate-0-or-1-integer
@@ -26,12 +26,12 @@ var currentAmountCardNumber = 0;
 
       //console.log(randomImg);
       let divCard = document.createElement('div');
-      divCard.classList.add('eyeSpan');
+      divCard.classList.add('winnerCardWrapper--winnerCard');
       divCard.innerHTML += `
-            <div class="eyeSpanImg">
+            <div class="winnerCardWrapper--winnerCard__img">
                 <img src="${winnerArrayImg}" alt="winner" />
             </div>
-            <div class="eyeSpantext">
+            <div class="winnerCardWrapper--winnerCard__text">
                 <h1>${winnerArray}</h1>
                 <a href="index.html" id="enter-btn" class="[ start-btn ]">ENTER/RESTART</a>
             </div>
