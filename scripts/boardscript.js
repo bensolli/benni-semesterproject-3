@@ -81,28 +81,35 @@ function togglePlayer() {
     }
 }
 
+
 /*indicates that it is Player Ones turn by turning player two opaic*/
 document.getElementById("player-card-2").classList.add('player-Border-Indicator-On');
 
+//let pizza = false;
+let playermodal = document.querySelector(".modal-wrapper-container");
+
 /*places the players on the board*/
 function playerturns() {
-    let player = togglePlayer();
 
-    if (playerOne.isPlayersturn == true) {
-        otherPlayer = playerTwo
-    } else  otherPlayer = playerOne;
+    if (!playermodal.hasChildNodes()){
+        let player = togglePlayer();
 
-    theDice();
+        if (playerOne.isPlayersturn == true) {
+            otherPlayer = playerTwo
+        } else  otherPlayer = playerOne;
 
-    otherPlayer.tileNumber = otherPlayer.tileNumber + diceNumber;
-    console.log(diceNumber, otherPlayer.tileNumber);
-    itsPlayerTurn(otherPlayer);
-    traps(otherPlayer);
-    diceSix();
-    playerCardPosition(otherPlayer);
+        theDice();
 
-    document.getElementById("player-card-" +  (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
-    document.getElementById("player-card-" + (player.index + 1)).classList.remove('player-Border-Indicator-On');
+        otherPlayer.tileNumber = otherPlayer.tileNumber + diceNumber;
+        console.log(diceNumber, otherPlayer.tileNumber);
+        itsPlayerTurn(otherPlayer);
+        traps(otherPlayer);
+        diceSix();
+        playerCardPosition(otherPlayer);
+
+        document.getElementById("player-card-" +  (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
+        document.getElementById("player-card-" + (player.index + 1)).classList.remove('player-Border-Indicator-On');
+    }
 }
 
 /*checks if the dice is six and grants another turn*/
@@ -113,10 +120,11 @@ function diceSix() {
     }
 }
 
+
 /*message after getter a six on the dice*/
 function diceSixModal() {
     setTimeout(function () {
-        let playermodal = document.querySelector(".modal-wrapper-container");
+        
         playermodal.innerHTML += `
             <div class="modal-wrapper">
                 <div class="modal-card">
@@ -125,6 +133,7 @@ function diceSixModal() {
                 </div>
             </div>`;
     }, 1100);   
+    pizza = false;
 }
 
 /*collecting all the traps in one function, defining where they will occur*/
@@ -140,7 +149,7 @@ function traps(traps) {
             whiteWalker(traps);
             break;
         case 7:
-            dragonEgg(traps); 
+            dragonEgg(traps);
             break;
         case 8:
         case 17:
@@ -153,6 +162,8 @@ function traps(traps) {
     if (traps.tileNumber > 30) {
         traps.tileNumber = traps.tileNumber - diceNumber;
     }
+
+
 }
 
 /*the dice function, outputs a random number and sets the dice*/
@@ -166,12 +177,13 @@ function theDice() {
 /*displays whatever players turn it is, and placing its token on the respective step on the gameboard*/
 function itsPlayerTurn(player) {
     setTimeout(function () {
-        let playertokens = document.querySelector(".board_step-" + player.tileNumber);
+        
         let playertoken1 = document.querySelector("#player-" + player.index);
         if (playertoken1) {
             playertoken1.remove();
         }
 
+        let playertokens = document.querySelector(".board_step-" + player.tileNumber);
         /*getting the items from local storage, and converting it to a usable array*/
         let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []
         console.log(playerArray);
@@ -182,9 +194,11 @@ function itsPlayerTurn(player) {
 
 /*spike trap, player has to go back to start*/
 function spikeTrap(traps) {
+    traps.tileNumber = 1;
+    itsPlayerTurn(traps);
     setTimeout(function () {
-        traps.tileNumber = 1;
-        let playermodal = document.querySelector(".modal-wrapper-container");
+        
+       
         playermodal.innerHTML += `
             <div class="modal-wrapper">
                 <div class="modal-card">
@@ -197,9 +211,11 @@ function spikeTrap(traps) {
 
 /*Dragon egg, (antitrap), if aquired the player is able to survive the firetrap*/
 function dragonEgg(traps) {
+    traps.dragonEgg =  1;
+    itsPlayerTurn(traps);
     setTimeout(function () {
-        traps.dragonEgg =  1;
-        let playermodal = document.querySelector(".modal-wrapper-container");
+     
+       
         playermodal.innerHTML += `
             <div class="modal-wrapper">
                 <div class="modal-card">
@@ -217,13 +233,13 @@ function firetrap(traps) {
         if (traps.dragonEgg === 1) {
             traps.tileNumber = traps.tileNumber + 1;
             traps.dragonEgg = 0;
-
+            itsPlayerTurn(traps);
 
             //let playermodal = document.createElement('div');
-            //playermodal.classList.add('modal-wrapper-container');
+            //playermodal.classList.add('modal-wrapper-container-' + [1]);
 
 
-            let playermodal = document.querySelector(".modal-wrapper-container");
+           
             playermodal.innerHTML += `
                 <div class="modal-wrapper">
                     <div class="modal-card">
@@ -235,8 +251,8 @@ function firetrap(traps) {
                 eggInventory(traps);
         } else {
             traps.tileNumber = traps.tileNumber - 7;
-
-            let playermodal = document.querySelector(".modal-wrapper-container");
+            itsPlayerTurn(traps);
+           
             playermodal.innerHTML += `
                 <div class="modal-wrapper">
                     <div class="modal-card">
@@ -251,30 +267,31 @@ function firetrap(traps) {
 
 /*white walker, basically the same as firetrap, without possibility to avoid it*/
 function whiteWalker(traps) {
+    traps.tileNumber = traps.tileNumber - 10;
+    itsPlayerTurn(traps);
     setTimeout(function () {
-        traps.tileNumber = traps.tileNumber - 10;
         
-        
-        let playermodal = document.querySelector(".modal-wrapper-container");
         playermodal.innerHTML += `
             <div class="modal-wrapper">
                 <div class="modal-card">
                     <h2>Oh no! player ${traps.playerType} just encountered a white walker! Save yourself! run back 10 steps</h2>
-                    <button onclick="clearModal()" >continue</button>
+                    <button onclick="clearModal()">continue</button>
                 </div>
             </div>`; 
-            
-            
+                 
     }, 1100);
 }
 
 
 /*sets the key ENTER as a way of turning the dice and pressing "Continue buttons"*/
 document.getElementById("pressEnter").addEventListener("keyup", function(event){
+
+
     if (event.keyCode === 32) {
         event.preventDefault();
         playerturns();
       }
+ 
       if (event.keyCode === 13) {
         event.preventDefault();
         clearModal();
@@ -284,8 +301,7 @@ document.getElementById("pressEnter").addEventListener("keyup", function(event){
 
 /*clears all open modals on the board*/
 function clearModal() {
-    let playermodal = document.querySelector(".modal-wrapper-container");
-    playermodal.innerHTML = "";
+    playermodal.removeChild(playermodal.lastElementChild);
 }
 
 /*this sets whoever reaches step 30 or more to local storage, and opens a new window displaying the winner*/
