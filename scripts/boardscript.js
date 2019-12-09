@@ -9,7 +9,7 @@ let playerOne = {
     dragonEgg: 0,
     isPlayersturn: true,
     index: 0,
-    playerType: "one",
+    playerType: "1",
     playerImage: characterImages[0]
 }
 
@@ -18,10 +18,9 @@ let playerTwo = {
     dragonEgg: 0,
     isPlayersturn: false,
     index: 1,
-    playerType: "two",
+    playerType: "2",
     playerImage: characterImages[1]
 }
-
 
 /*makes a infocard for Player One*/
 let playerCard1 = document.querySelector(".player-card-1");
@@ -81,7 +80,6 @@ function togglePlayer() {
     }
 }
 
-
 /*indicates that it is Player Ones turn by turning player two opaic*/
 document.getElementById("player-card-2").classList.add('player-Border-Indicator-On');
 
@@ -91,7 +89,9 @@ let playermodal = document.querySelector(".modal-wrapper-container");
 /*places the players on the board*/
 function playerturns() {
 
+/*runs only if there is no popup modals*/
     if (!playermodal.hasChildNodes()){
+
         let player = togglePlayer();
 
         if (playerOne.isPlayersturn == true) {
@@ -101,34 +101,34 @@ function playerturns() {
         theDice();
 
         otherPlayer.tileNumber = otherPlayer.tileNumber + diceNumber;
-        console.log(diceNumber, otherPlayer.tileNumber);
+        
         itsPlayerTurn(otherPlayer);
         traps(otherPlayer);
-        diceSix();
+        diceSix(otherPlayer);
         playerCardPosition(otherPlayer);
 
-        document.getElementById("player-card-" +  (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
+        /*adds a style to the player cards depending who's turn it is*/
+        document.getElementById("player-card-" + (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
         document.getElementById("player-card-" + (player.index + 1)).classList.remove('player-Border-Indicator-On');
+        console.log(player);
     }
 }
 
 /*checks if the dice is six and grants another turn*/
-function diceSix() {
+function diceSix(otherPlayer) {
     if (diceNumber == 6) {
         togglePlayer();
-        diceSixModal();
+        diceSixModal(otherPlayer);  
     }
 }
 
-
 /*message after getter a six on the dice*/
-function diceSixModal() {
+function diceSixModal(otherPlayer) {
     setTimeout(function () {
-        
-        playermodal.innerHTML += `
-            <div class="modal-wrapper">
+        document.getElementById("player-card-" + (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
+        playermodal.innerHTML += `<div class="modal-wrapper">
                 <div class="modal-card">
-                    <h2>You got six and is granted another turn!</h2>
+                    <h2>Player ${otherPlayer.playerType} got six and is granted another turn!</h2>
                     <button onclick="clearModal()">continue</button>
                 </div>
             </div>`;
@@ -162,8 +162,6 @@ function traps(traps) {
     if (traps.tileNumber > 30) {
         traps.tileNumber = traps.tileNumber - diceNumber;
     }
-
-
 }
 
 /*the dice function, outputs a random number and sets the dice*/
@@ -194,13 +192,12 @@ function itsPlayerTurn(player) {
 
 /*spike trap, player has to go back to start*/
 function spikeTrap(traps) {
-    traps.tileNumber = 1;
-    itsPlayerTurn(traps);
+
     setTimeout(function () {
-        
+        traps.tileNumber = 1;
+        itsPlayerTurn(traps);
        
-        playermodal.innerHTML += `
-            <div class="modal-wrapper">
+        playermodal.innerHTML += `<div class="modal-wrapper">
                 <div class="modal-card">
                     <h2>Oh no! player ${traps.playerType} you stept on deadly spikes, go back to start!</h2>
                     <button onclick="clearModal()">continue</button>
@@ -211,13 +208,12 @@ function spikeTrap(traps) {
 
 /*Dragon egg, (antitrap), if aquired the player is able to survive the firetrap*/
 function dragonEgg(traps) {
-    traps.dragonEgg =  1;
-    itsPlayerTurn(traps);
     setTimeout(function () {
-     
-       
-        playermodal.innerHTML += `
-            <div class="modal-wrapper">
+
+        traps.dragonEgg =  1;
+        itsPlayerTurn(traps);
+
+        playermodal.innerHTML += `<div class="modal-wrapper">
                 <div class="modal-card">
                     <h2>Player ${traps.playerType} aquired a dragon egg, and is now fireresistant!</h2>
                     <button onclick="clearModal()">continue</button>
@@ -234,45 +230,37 @@ function firetrap(traps) {
             traps.tileNumber = traps.tileNumber + 1;
             traps.dragonEgg = 0;
             itsPlayerTurn(traps);
-
-            //let playermodal = document.createElement('div');
-            //playermodal.classList.add('modal-wrapper-container-' + [1]);
-
-
            
-            playermodal.innerHTML += `
-                <div class="modal-wrapper">
+            playermodal.innerHTML += `<div class="modal-wrapper">
                     <div class="modal-card">
                         <h2>Player ${traps.playerType} skipped the fire with one extra step, sadly the dragon egg hatched and flew away</h2>
                         <button onclick="clearModal()">continue</button>
                     </div>
                 </div>`;
-
                 eggInventory(traps);
         } else {
             traps.tileNumber = traps.tileNumber - 7;
             itsPlayerTurn(traps);
            
-            playermodal.innerHTML += `
-                <div class="modal-wrapper">
+            playermodal.innerHTML += `<div class="modal-wrapper">
                     <div class="modal-card">
                         <h2>Oh no! player ${traps.playerType} had to run back seven steps to put out the fire</h2>
                         <button onclick="clearModal()">continue</button>
                     </div>
                 </div>`;
-
         }
     }, 1100);
 }
 
 /*white walker, basically the same as firetrap, without possibility to avoid it*/
 function whiteWalker(traps) {
-    traps.tileNumber = traps.tileNumber - 10;
-    itsPlayerTurn(traps);
+
     setTimeout(function () {
+        traps.tileNumber = traps.tileNumber - 10;
+        itsPlayerTurn(traps);
         
-        playermodal.innerHTML += `
-            <div class="modal-wrapper">
+        playermodal.innerHTML += 
+        `<div class="modal-wrapper">
                 <div class="modal-card">
                     <h2>Oh no! player ${traps.playerType} just encountered a white walker! Save yourself! run back 10 steps</h2>
                     <button onclick="clearModal()">continue</button>
@@ -282,10 +270,8 @@ function whiteWalker(traps) {
     }, 1100);
 }
 
-
 /*sets the key ENTER as a way of turning the dice and pressing "Continue buttons"*/
 document.getElementById("pressEnter").addEventListener("keyup", function(event){
-
 
     if (event.keyCode === 32) {
         event.preventDefault();
@@ -296,7 +282,7 @@ document.getElementById("pressEnter").addEventListener("keyup", function(event){
         event.preventDefault();
         clearModal();
       }
-    });
+});
     
 
 /*clears all open modals on the board*/
@@ -307,17 +293,13 @@ function clearModal() {
 /*this sets whoever reaches step 30 or more to local storage, and opens a new window displaying the winner*/
 function checkIfWon(traps) {
     setTimeout(function () {
-    localStorage.setItem('winner', JSON.stringify('Player' + ' ' + traps.playerType + ' ' + 'is the winner!'));
-    localStorage.setItem('winnerImg', JSON.stringify(traps.playerImage));
-    window.open("winner-page.html", "_top");
-}, 1500);
+        localStorage.setItem('winner', JSON.stringify('Player' + ' ' + traps.playerType + ' ' + 'is the winner!'));
+        localStorage.setItem('winnerImg', JSON.stringify(traps.playerImage));
+        window.open("winner-page.html", "_top");
+    }, 1500);
 }
 
-/*adds sound effects*/
-function playAudio() {
-    let x = document.getElementById("characterAudio");
-    x.play();
-}
+
 
 
 

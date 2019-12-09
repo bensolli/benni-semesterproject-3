@@ -1,9 +1,11 @@
 
 
 
-let winnerArray = localStorage.getItem('winner') ? JSON.parse(localStorage.getItem('winner')) : [];
-let winnerArrayImg = localStorage.getItem('winnerImg') ? JSON.parse(localStorage.getItem('winnerImg')) : [];
+//let winnerArray = localStorage.getItem('winner') ? JSON.parse(localStorage.getItem('winner')) : [];
+//let winnerArrayImg = localStorage.getItem('winnerImg') ? JSON.parse(localStorage.getItem('winnerImg')) : [];
 
+let winnerArray  = JSON.parse(localStorage.getItem('winner'));
+let winnerArrayImg = JSON.parse(localStorage.getItem('winnerImg'));
 
 /*
 let winnerModal = document.querySelector(".playerName");
@@ -16,7 +18,6 @@ characterImages = JSON.parse(localStorage.getItem('players'));
 
 var limitCardNumber = 50;
 var currentAmountCardNumber = 0;
-
 
     screen = document.querySelector('.winnerCardWrapper');
     screen.addEventListener('mousemove', function(e) {

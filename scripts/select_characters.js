@@ -92,6 +92,7 @@ function markSelectedPlayersChecked() {
     }  
 }
 
+/*adds a start button when two players has been selected*/
 function addStartBtn(){
     if(selectedPlayers.length === 2){
         let startBtnDiv = document.getElementById("startBtnDiv");
@@ -109,12 +110,6 @@ function startGame(){
     //localStorage.setItem('player1', JSON.stringify(characterNames[0]));
     localStorage.setItem('players', JSON.stringify(characterNames));  
 }
-
-/*adds sound effects*/
-function playAudio() { 
-let x = document.getElementById("characterAudio"); 
-  x.play(); 
-} 
 
 
 
