@@ -214,6 +214,10 @@ h5 {
   text-decoration: none;
 }
 
+#startBtnDiv {
+  float: left;
+}
+
 .start-btn {
   margin-top: 30px;
   padding: 10px;
@@ -221,6 +225,7 @@ h5 {
   color: #A1F6FF;
   text-decoration: none;
   margin: 0 15px 0 0;
+  display: inline-block;
 }
 
 .start-btn:hover {
@@ -741,12 +746,11 @@ div[class*=board_step-wrapper-] img {
 .modal-card {
   background: #ececec;
   padding: 20px;
-  border-radius: 5px;
   box-shadow: 0px 0px 75px 0px rgba(0, 0, 0, 0.1);
   color: #222222;
-  width: 50%;
-  left: 25%;
-  right: 25%;
+  width: 30%;
+  left: 35%;
+  right: 35%;
   top: 25%;
   bottom: 25%;
   position: relative;

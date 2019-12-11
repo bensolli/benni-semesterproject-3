@@ -104,28 +104,33 @@ function playerturns() {
         
         itsPlayerTurn(otherPlayer);
         traps(otherPlayer);
-        diceSix(otherPlayer);
         playerCardPosition(otherPlayer);
-
-        /*adds a style to the player cards depending who's turn it is*/
-        document.getElementById("player-card-" + (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
-        document.getElementById("player-card-" + (player.index + 1)).classList.remove('player-Border-Indicator-On');
-        console.log(player);
+        
+        if (diceSix(otherPlayer) !== true){
+            /*adds a style to the player cards depending who's turn it is*/
+            document.getElementById("player-card-" + (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
+            document.getElementById("player-card-" + (player.index + 1)).classList.remove('player-Border-Indicator-On');
+            console.log(player);
+        }
     }
 }
 
 /*checks if the dice is six and grants another turn*/
 function diceSix(otherPlayer) {
-    if (diceNumber == 6) {
+
+    if (diceNumber === 6) {
         togglePlayer();
-        diceSixModal(otherPlayer);  
+        diceSixModal(otherPlayer); 
+        return true;
     }
+
+    return false;
+
 }
 
 /*message after getter a six on the dice*/
 function diceSixModal(otherPlayer) {
     setTimeout(function () {
-        document.getElementById("player-card-" + (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
         playermodal.innerHTML += `<div class="modal-wrapper">
                 <div class="modal-card">
                     <h2>Player ${otherPlayer.playerType} got six and is granted another turn!</h2>
@@ -133,7 +138,6 @@ function diceSixModal(otherPlayer) {
                 </div>
             </div>`;
     }, 1100);   
-    pizza = false;
 }
 
 /*collecting all the traps in one function, defining where they will occur*/
@@ -191,15 +195,15 @@ function itsPlayerTurn(player) {
 }
 
 /*spike trap, player has to go back to start*/
-function spikeTrap(traps) {
+function spikeTrap(player) {
 
     setTimeout(function () {
-        traps.tileNumber = 1;
-        itsPlayerTurn(traps);
+        player.tileNumber = 1;
+        itsPlayerTurn(player);
        
         playermodal.innerHTML += `<div class="modal-wrapper">
                 <div class="modal-card">
-                    <h2>Oh no! player ${traps.playerType} you stept on deadly spikes, go back to start!</h2>
+                    <h2>Oh no! player ${player.playerType} you stept on deadly spikes, go back to start!</h2>
                     <button onclick="clearModal()">continue</button>
                 </div>
             </div>`;

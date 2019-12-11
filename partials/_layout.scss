@@ -52,6 +52,9 @@
     text-decoration: none;
   }
 
+  #startBtnDiv{
+    float: left;
+  }
 
 .start-btn {
   margin-top: 30px;
@@ -60,6 +63,7 @@
   color: $icy-blue;
   text-decoration: none;
   margin: 0 15px 0 0;
+  display: inline-block;
   }
 
   .start-btn:hover {
