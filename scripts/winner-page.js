@@ -1,20 +1,8 @@
 
 
 
-//let winnerArray = localStorage.getItem('winner') ? JSON.parse(localStorage.getItem('winner')) : [];
-//let winnerArrayImg = localStorage.getItem('winnerImg') ? JSON.parse(localStorage.getItem('winnerImg')) : [];
-
 let winnerArray  = JSON.parse(localStorage.getItem('winner'));
 let winnerArrayImg = JSON.parse(localStorage.getItem('winnerImg'));
-
-/*
-let winnerModal = document.querySelector(".playerName");
-winnerModal.innerHTML += `
-<h1>${winnerArray}</h1>
-`;
-*/
-
-characterImages = JSON.parse(localStorage.getItem('players'));
 
 var limitCardNumber = 50;
 var currentAmountCardNumber = 0;
@@ -22,10 +10,6 @@ var currentAmountCardNumber = 0;
     screen = document.querySelector('.winnerCardWrapper');
     screen.addEventListener('mousemove', function(e) {
 
-      //https://stackoverflow.com/questions/45136711/javascript-random-generate-0-or-1-integer
-      //var randomImg = Math.random(); if(randomImg<0.5){randomImg =Math.floor(randomImg)} else{ randomImg= Math.ceil(randomImg)}
-
-      //console.log(randomImg);
       let divCard = document.createElement('div');
       divCard.classList.add('winnerCardWrapper--winnerCard');
       divCard.innerHTML += `

@@ -83,7 +83,6 @@ function togglePlayer() {
 /*indicates that it is Player Ones turn by turning player two opaic*/
 document.getElementById("player-card-2").classList.add('player-Border-Indicator-On');
 
-//let pizza = false;
 let playermodal = document.querySelector(".modal-wrapper-container");
 
 /*places the players on the board*/
@@ -105,7 +104,6 @@ function playerturns() {
         itsPlayerTurn(otherPlayer);
         traps(otherPlayer);
         playerCardPosition(otherPlayer);
-        
         if (diceSix(otherPlayer) !== true){
             /*adds a style to the player cards depending who's turn it is*/
             document.getElementById("player-card-" + (otherPlayer.index + 1)).classList.add('player-Border-Indicator-On');
@@ -121,6 +119,7 @@ function diceSix(otherPlayer) {
     if (diceNumber === 6) {
         togglePlayer();
         diceSixModal(otherPlayer); 
+        playerCardPosition(otherPlayer);
         return true;
     }
 
@@ -147,25 +146,36 @@ function traps(traps) {
         case 3:
         case 25:
             spikeTrap(traps);
+            playerCardPosition(traps);
             break;
         case 14:
         case 28:
             whiteWalker(traps);
+            playerCardPosition(traps);
             break;
         case 7:
             dragonEgg(traps);
+            playerCardPosition(traps);
             break;
         case 8:
         case 17:
             firetrap(traps);
+            playerCardPosition(traps);
             break;
         case 30:
             checkIfWon(traps);
     }
 
+   // if (traps.tileNumber < 1) {
+    //   traps.tileNumber = 1;
+   // }
+
+    //???//
     if (traps.tileNumber > 30) {
         traps.tileNumber = traps.tileNumber - diceNumber;
     }
+
+
 }
 
 /*the dice function, outputs a random number and sets the dice*/
