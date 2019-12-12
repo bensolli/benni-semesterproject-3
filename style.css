@@ -456,7 +456,6 @@ div[class*=board_step-wrapper-] {
   position: relative;
   border-bottom: 10px solid #ececec;
 }
-
 div[class*=board_step-wrapper-] img {
   position: absolute;
   bottom: 0;
@@ -466,7 +465,7 @@ div[class*=board_step-wrapper-] img {
 }
 
 .ladder {
-  bottom: 25px;
+  margin-bottom: 12px;
 }
 
 #white-walker {

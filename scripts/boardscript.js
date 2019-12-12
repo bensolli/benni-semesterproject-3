@@ -219,7 +219,7 @@ function spikeTrap(player) {
 function dragonEgg(player) {
     setTimeout(function () {
 
-        player.dragonEgg =  1;
+        player.dragonEgg = 1;
         itsPlayerTurn(player);
 
         playermodal.innerHTML += `<div class="modal-wrapper">

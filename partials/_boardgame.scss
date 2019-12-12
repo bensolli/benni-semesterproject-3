@@ -14,7 +14,6 @@ div[class*="player-card-"] {
     width: 40%;
 }
 
-
 .player-card_text{
     float: right;
     width: 45%;
@@ -45,7 +44,6 @@ div[class*="player-card-"] {
     transform: scale(1.2) rotate(10deg);
   }
 
-
 .board-grid{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -57,18 +55,18 @@ div[class*="player-card-"] {
 div[class*="board_step-wrapper-"] {
     position: relative;
     border-bottom: 10px solid $white;
-}
 
-div[class*="board_step-wrapper-"] img {
-    position: absolute;
-    bottom: 0;
-    width: 60%;
-    left: 20%;
-    right: 20%;
+    img {
+        position: absolute;
+        bottom: 0;
+        width: 60%;
+        left: 20%;
+        right: 20%;
+    }
 }
 
 .ladder{
-    bottom: 25px;
+    margin-bottom: 12px;
 }
 
 #white-walker{
