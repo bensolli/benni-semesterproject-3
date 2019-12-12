@@ -200,20 +200,6 @@ h5 {
   z-index: 1;
 }
 
-.background-decoration {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 10;
-}
-
-.quit-btn {
-  color: white;
-  text-decoration: none;
-}
-
 #startBtnDiv {
   float: left;
 }
@@ -313,6 +299,27 @@ h5 {
 
 .overFlowHidden {
   overflow: hidden;
+}
+
+.rules {
+  width: 50%;
+  left: 25%;
+  right: 25%;
+  height: 50%;
+  top: 25%;
+  bottom: 25%;
+  position: relative;
+}
+.rules h1, .rules li {
+  color: #ececec;
+}
+.rules ol {
+  padding: 0;
+  margin-bottom: 50px;
+  margin-left: 1em;
+}
+.rules li {
+  font-size: 18px;
 }
 
 .character-card {

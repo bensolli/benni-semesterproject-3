@@ -1,0 +1,23 @@
+.rules{
+    width: 50%;
+    left: 25%;
+    right: 25%;
+    height: 50%;
+    top: 25%;
+    bottom: 25%;
+    position: relative;
+  
+    h1, li {
+      color: $white;  
+    }
+  
+    ol{
+      padding:0;
+      margin-bottom: 50px;
+  
+      margin-left: 1em;
+    }
+    li{
+        font-size: 18px;
+      }
+  }
