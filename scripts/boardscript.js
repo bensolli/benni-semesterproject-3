@@ -186,11 +186,12 @@ function theDice() {
     document.querySelector('.dice-img').setAttribute('src', diceImage);
 }
 
-/*displays whatever players turn it is, and placing its token on the respective step on the gameboard*/
+/*Placing its token on the respective step on the gameboard*/
 function itsPlayerTurn(player) {
     setTimeout(function () {
         
         let playertoken1 = document.querySelector("#player-" + player.index);
+         
         if (playertoken1) {
             playertoken1.remove();
         }
@@ -199,8 +200,11 @@ function itsPlayerTurn(player) {
         /*getting the items from local storage, and converting it to a usable array*/
         let playerArray = localStorage.getItem('players') ? JSON.parse(localStorage.getItem('players')) : []
         console.log(playerArray);
-        playertokens.innerHTML += `
-            <div id="player-${player.index}"><img src=${playerArray[player.index]} /></div>`;
+        
+        playertokens.innerHTML += `<div id="player-${player.index}"><img src=${playerArray[player.index]} /></div>`;
+
+            
+
     }, 500);
 }
 

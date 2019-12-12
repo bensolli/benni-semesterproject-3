@@ -8,7 +8,7 @@ var limitCardNumber = 50;
 var currentAmountCardNumber = 0;
 
     screen = document.querySelector('.winnerCardWrapper');
-    screen.addEventListener('mousemove', function(e) {
+    screen.addEventListener('mousemove', function(event) {
 
       let divCard = document.createElement('div');
       divCard.classList.add('winnerCardWrapper--winnerCard');
@@ -22,8 +22,8 @@ var currentAmountCardNumber = 0;
             </div>
         `;
       
-      divCard.style.top = e.pageY + 'px';
-      divCard.style.left = e.pageX + 'px';
+      divCard.style.top = event.pageY + 'px';
+      divCard.style.left = event.pageX + 'px';
       //https://stackoverflow.com/questions/49124327/add-dynamic-elements-with-cursor-position?fbclid=IwAR1bBbP73Idt46rz6oCrb_hyU3jhjgX4boqpBbVJNcAejKKGb3OTEf47GqM
       divCard.style.border = ' 2px solid #'+ (Math.random()*0xFFFFFF<<0).toString(16);
       divCard.style.background = 'rgba(0,0,50,0.1)';
@@ -34,7 +34,7 @@ var currentAmountCardNumber = 0;
       if (currentAmountCardNumber > limitCardNumber){
         screen.removeChild(screen.childNodes[0]);
     }
-      e.preventDefault();
+      event.preventDefault();
     })
 
 /*

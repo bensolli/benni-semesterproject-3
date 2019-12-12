@@ -746,6 +746,7 @@ div[class*=board_step-wrapper-] img {
 .modal-card {
   background: #ececec;
   padding: 20px;
+  min-height: 200px;
   box-shadow: 0px 0px 75px 0px rgba(0, 0, 0, 0.1);
   color: #222222;
   width: 30%;
@@ -754,6 +755,20 @@ div[class*=board_step-wrapper-] img {
   top: 25%;
   bottom: 25%;
   position: relative;
+}
+.modal-card button {
+  padding: 10px;
+  border: 2px solid #01133A;
+  background: #ececec;
+  color: #01133A;
+  bottom: 20px;
+  position: absolute;
+  font-size: 1em;
+}
+.modal-card button:hover {
+  background: #01133A;
+  color: #A1F6FF;
+  transition: ease-in-out 0.3s;
 }
 
 /*# sourceMappingURL=style.css.map */
