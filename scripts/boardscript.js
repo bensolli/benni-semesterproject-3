@@ -2,7 +2,6 @@
 characterImages = JSON.parse(localStorage.getItem('players'));
 
 
-
 /*defining the players*/
 let playerOne = {
     tileNumber: 1,
@@ -85,7 +84,7 @@ document.getElementById("player-card-2").classList.add('player-Border-Indicator-
 
 let playermodal = document.querySelector(".modal-wrapper-container");
 
-/*places the players on the board*/
+/*Mother function runs everything,*/
 function playerturns() {
 
 /*runs only if there is no popup modals*/
@@ -122,9 +121,7 @@ function diceSix(otherPlayer) {
         playerCardPosition(otherPlayer);
         return true;
     }
-
     return false;
-
 }
 
 /*message after getter a six on the dice*/
@@ -166,16 +163,10 @@ function traps(traps) {
             checkIfWon(traps);
     }
 
-   // if (traps.tileNumber < 1) {
-    //   traps.tileNumber = 1;
-   // }
-
-    //???//
+    /*stopping the players form going over 30*/
     if (traps.tileNumber > 30) {
         traps.tileNumber = traps.tileNumber - diceNumber;
     }
-
-
 }
 
 /*the dice function, outputs a random number and sets the dice*/
@@ -186,7 +177,7 @@ function theDice() {
     document.querySelector('.dice-img').setAttribute('src', diceImage);
 }
 
-/*Placing its token on the respective step on the gameboard*/
+/*Placing the players on the respective step on the gameboard*/
 function itsPlayerTurn(player) {
     setTimeout(function () {
         
@@ -225,44 +216,44 @@ function spikeTrap(player) {
 }
 
 /*Dragon egg, (antitrap), if aquired the player is able to survive the firetrap*/
-function dragonEgg(traps) {
+function dragonEgg(player) {
     setTimeout(function () {
 
-        traps.dragonEgg =  1;
-        itsPlayerTurn(traps);
+        player.dragonEgg =  1;
+        itsPlayerTurn(player);
 
         playermodal.innerHTML += `<div class="modal-wrapper">
                 <div class="modal-card">
-                    <h2>Player ${traps.playerType} aquired a dragon egg, and is now fireresistant!</h2>
+                    <h2>Player ${player.playerType} aquired a dragon egg, and is now fireresistant!</h2>
                     <button onclick="clearModal()">continue</button>
                 </div>
             </div>`;
-            eggInventory(traps);
+            eggInventory(player);
     }, 1100);
 }
 
 /*Firetrap, the players has to go back 10 steps if they do not have a dragon egg*/
-function firetrap(traps) {
+function firetrap(player) {
     setTimeout(function () {
-        if (traps.dragonEgg === 1) {
-            traps.tileNumber = traps.tileNumber + 1;
-            traps.dragonEgg = 0;
-            itsPlayerTurn(traps);
+        if (player.dragonEgg === 1) {
+            player.tileNumber = player.tileNumber + 1;
+            player.dragonEgg = 0;
+            itsPlayerTurn(player);
            
             playermodal.innerHTML += `<div class="modal-wrapper">
                     <div class="modal-card">
-                        <h2>Player ${traps.playerType} skipped the fire with one extra step, sadly the dragon egg hatched and flew away</h2>
+                        <h2>Player ${player.playerType} skipped the fire with one extra step, sadly the dragon egg hatched and flew away</h2>
                         <button onclick="clearModal()">continue</button>
                     </div>
                 </div>`;
-                eggInventory(traps);
+                eggInventory(player);
         } else {
-            traps.tileNumber = traps.tileNumber - 7;
-            itsPlayerTurn(traps);
+            player.tileNumber = player.tileNumber - 7;
+            itsPlayerTurn(player);
            
             playermodal.innerHTML += `<div class="modal-wrapper">
                     <div class="modal-card">
-                        <h2>Oh no! player ${traps.playerType} had to run back seven steps to put out the fire</h2>
+                        <h2>Oh no! player ${player.playerType} had to run back seven steps to put out the fire</h2>
                         <button onclick="clearModal()">continue</button>
                     </div>
                 </div>`;
@@ -271,16 +262,16 @@ function firetrap(traps) {
 }
 
 /*white walker, basically the same as firetrap, without possibility to avoid it*/
-function whiteWalker(traps) {
+function whiteWalker(player) {
 
     setTimeout(function () {
-        traps.tileNumber = traps.tileNumber - 10;
-        itsPlayerTurn(traps);
+        player.tileNumber = player.tileNumber - 10;
+        itsPlayerTurn(player);
         
         playermodal.innerHTML += 
         `<div class="modal-wrapper">
                 <div class="modal-card">
-                    <h2>Oh no! player ${traps.playerType} just encountered a white walker! Save yourself! run back 10 steps</h2>
+                    <h2>Oh no! player ${player.playerType} just encountered a white walker! Save yourself! run back 10 steps</h2>
                     <button onclick="clearModal()">continue</button>
                 </div>
             </div>`; 

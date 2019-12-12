@@ -10,9 +10,6 @@
     margin-top: 20px;
 }
 
-
-
-
 .character-display {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -85,8 +82,6 @@
 }
 
 
-
-
 .character-wrapper{
     width: 150px;
     height: 150px;
@@ -106,10 +101,6 @@ input[type="checkbox"][id^="character-checkbox"] {
     cursor: pointer;
     user-select: none;
     transition: ease-in-out 150ms;
-    //width: 50%;
-    //height: 50%;
-    //left:25%;
-    //right:25%;
 }
 
 .character-checkbox-label:hover {

@@ -771,4 +771,32 @@ div[class*=board_step-wrapper-] img {
   transition: ease-in-out 0.3s;
 }
 
+.winnerCardWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+}
+.winnerCardWrapper--winnerCard {
+  width: 30%;
+  padding: 50px;
+  position: absolute;
+}
+.winnerCardWrapper--winnerCard__img img {
+  width: 20%;
+  float: left;
+  position: relative;
+}
+.winnerCardWrapper--winnerCard__text {
+  float: right;
+  position: relative;
+  width: 70%;
+}
+
+.overFlowHidden {
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=style.css.map */

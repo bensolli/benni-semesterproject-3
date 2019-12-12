@@ -6,8 +6,8 @@ console.log(characters);
 selectedPlayers = [];
 
 /*Stores the character names in an array*/
-characterNames = [];
-console.log(characterNames);
+characterImages = [];
+console.log(characterImages);
 
 /*Making it possible to select character using the 1-0 keys*/
 document.getElementById("pressEnter").addEventListener("keyup", function(event){
@@ -52,9 +52,9 @@ function createCard(){
         let id = selectedPlayers[i];
         let character = characters[id];
 
-        /*saves the images to the Array characterNames*/
+        /*saves the images to the Array characterImages*/
         let theNames = document.querySelector("#character-checkbox-" + id);
-        characterNames.push(theNames.dataset.img);
+        characterImages.push(theNames.dataset.img);
 
         someCards.innerHTML += `
         <div class="col-3">
@@ -104,11 +104,11 @@ function addStartBtn(){
     }
 }
 
-/*Takes the values of the array characterNames and sends it to local storage*/
+/*Takes the values of the array characterImages and sends it to local storage*/
 function startGame(){
-    characterNames = characterNames.slice(-2); 
-    //localStorage.setItem('player1', JSON.stringify(characterNames[0]));
-    localStorage.setItem('players', JSON.stringify(characterNames));  
+    characterImages = characterImages.slice(-2); 
+    //localStorage.setItem('player1', JSON.stringify(characterImages[0]));
+    localStorage.setItem('players', JSON.stringify(characterImages));  
 }
 
 
