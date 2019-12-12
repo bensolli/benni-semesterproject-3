@@ -264,55 +264,6 @@ h5 {
 .rules h1, .rules li {
   color: #ececec;
 }
-.rules li {
-  font-size: 18px;
-}
-.rules ol {
-  padding: 0;
-  margin-bottom: 50px;
-  margin-left: 1em;
-}
-
-.winnerCardWrapper {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 999;
-}
-.winnerCardWrapper--winnerCard {
-  width: 30%;
-  padding: 50px;
-  position: absolute;
-}
-.winnerCardWrapper--winnerCard__img img {
-  width: 20%;
-  float: left;
-  position: relative;
-}
-.winnerCardWrapper--winnerCard__text {
-  float: right;
-  position: relative;
-  width: 70%;
-}
-
-.overFlowHidden {
-  overflow: hidden;
-}
-
-.rules {
-  width: 50%;
-  left: 25%;
-  right: 25%;
-  height: 50%;
-  top: 25%;
-  bottom: 25%;
-  position: relative;
-}
-.rules h1, .rules li {
-  color: #ececec;
-}
 .rules ol {
   padding: 0;
   margin-bottom: 50px;
